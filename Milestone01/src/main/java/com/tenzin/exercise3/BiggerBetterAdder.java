@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.tenzin.adder;
+package com.tenzin.exercise3;
 
 import java.util.Scanner;
 
@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  * @author Tenzin Woesel
  */
-public class Adder {
+public class BiggerBetterAdder {
 
     public static void main(String[] args) {
         int sum, operand1, operand2;

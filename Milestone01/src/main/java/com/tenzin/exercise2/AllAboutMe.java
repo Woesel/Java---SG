@@ -15,11 +15,10 @@ public class AllAboutMe {
         
         String myName, myFavFood, place, sports;
         
-        int noOfPets, age; 
+        int noOfPets; 
         
         myName = "Tenzin Woesel";
         myFavFood = "Dumplings";
-        age = 100;
         noOfPets = 3;
         place = "Sunnyside";
         sports= "soccer";

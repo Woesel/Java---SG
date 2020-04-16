@@ -31,7 +31,7 @@ public class TheOrderOfThings {
         
         //Using the + with strings doesn't add -- it concatenates!( sticks them together)
         
-        System.out.println(number + " " + opinion + " " + size + " " + age + " " + shape + " " + color + " " + origin + " " + material + " " + purpose + " " + noun);
+        System.out.printf(number + " " + opinion + " " + size + " " + age + " " + shape + " " + color + " " + origin + " " + material + " " + purpose + " " + noun);
         
     }
 
