@@ -20,7 +20,7 @@ public class GuessMeMore {
         System.out.println(num);
         Scanner sc = new Scanner(System.in);
 
-        for (int i = 4; i >= 0; i--) {
+        for (int i = 2; i >= 0; i--) {
             
             System.out.print("Please enter the number you've guessed: ");
             userNum = sc.nextInt();

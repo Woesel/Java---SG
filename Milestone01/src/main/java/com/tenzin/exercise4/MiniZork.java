@@ -56,20 +56,29 @@ public class MiniZork {
                 }
             
         } 
-        else if (action.equalsIgnoreCase("go to the house")) {
+        else if (action.equals("go to the house")) {
             System.out.println("You went to the house. The house is very dark.");
-            System.out.println("look for a flashlight or run away");
+            System.out.println("look for a flashlight or walk in the dark");
             
-        action = userInput.nextLine();
+        action = userInput.nextLine().toLowerCase();
         if (action.equalsIgnoreCase("look for a flashlight")) {
 
             System.out.println("You looked for a flashlight and found one.");
             System.out.println("You found an exit sign using the flashlight.");
             System.out.println("You went for the exit and now you are at the starting point again.");
-        } else if (action.equalsIgnoreCase("run away")) {
-            System.out.println("You ran but you stumbled upon something.");
-            System.out.println("And fell into a well.");
-            System.out.println("There's no way to get out and you died of starvation.");
+        } else if (action.equalsIgnoreCase("walk in the dark")) {
+            System.out.println("You walked and reached a new place.");
+            System.out.println("It's an abandoned garage. There's a car and a spaceship.");
+            System.out.println("enter the car or enter the spaceship.");
+        }
+        action = userInput.nextLine().toLowerCase();
+        if(action.equals("enter the car")){
+            System.out.println("There's a key inside.");
+            System.out.println("You started the engine and the car blew up. BOOOM! You were shredded into pieces.");
+        }else if(action.equals("enter the spaceship")){
+            System.out.println("You entered the spaceship.");
+            System.out.println("There's a secret door on the floor. You opened the door and fell into oblivion.");
+            System.out.println("And it sent you back to the starting position.");
         }
       }
     }

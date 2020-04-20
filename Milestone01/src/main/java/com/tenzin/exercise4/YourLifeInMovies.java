@@ -26,24 +26,24 @@ public class YourLifeInMovies {
         
         System.out.println("Well " + name + "...");
 
-        if (birthYear < 2005 || birthYear < 1980) {
+        if (birthYear < 2005) {
 
             System.out.println("Did you realise that Pixar's 'UP' came out over a decade ago.");
         }
-        if(birthYear < 1995 || birthYear <1980){
+        if(birthYear < 1995){
             System.out.println("Did you know that the first Harry Potter came out over 15 years ago.");
         }
-        if(birthYear < 1985 || birthYear < 1980){
+        if(birthYear < 1985){
             System.out.println("Did you realize that Space Jam came not last decade, but the one before THAT.");
         }
         if(birthYear < 1975){
             System.out.println("The original Jurrassic Park release is closer to the first lunar landing than it is to today.");
         }
-        if(birthYear < 1965){
+        if(birthYear <= 1965){
             System.out.println("Did you realize that the MASH TV series has been around for almost half a century");
         }
-        else{ 
-            System.out.println("You are born in special time zone. My memory needs to be updated with new movies.");
+        if(birthYear < 1965 || birthYear > 2005){ 
+            System.out.println("You are born in a special time zone. My memory needs to be updated with new movies.");
         }
     }
 
