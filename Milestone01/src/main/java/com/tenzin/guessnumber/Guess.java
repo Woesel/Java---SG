@@ -3,42 +3,66 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Tenzin Woesel
  * @13th Aug, 2020
  */
 package com.tenzin.guessnumber;
-import  java.util.Scanner;
+
+import java.util.Scanner;
 import java.util.Random;
 
-public class Guess{
-	
-	public static void main(String[]args){
-		
-	Random rand = new Random();
-	Scanner scan = new Scanner (System.in);
+public class Guess {
 
-	int randomInt = rand.nextInt(100);
+    public static void main(String[] args) {
 
-	System.out.println("Random Integer: " +randomInt); 
+        int randomInt = generate();
+        int guesses = 0;
+        int guessedNum = 0;
+        boolean win = false;
 
-	System.out.println("Guess the random number");
+        System.out.println("Random Integer: " + randomInt);
 
-	int guesses = 0;
-	int guessedNum = 0;
+        for (guesses = 1; !win; guesses++) {
 
-	for(guesses=1; guessedNum != randomInt; guesses++){
-		guessedNum = scan.nextInt();
-		if(guessedNum>randomInt){
-			System.out.println("Guess a smaller number.");
-                    }else if(guessedNum<randomInt){
-			System.out.println("Guess a bigger number.");
-                    }else{
-			System.out.println("You guessed the number correctly and it took you " +guesses+ "  tries.");
-                    }
-                }
+            guessedNum = userGuess();
+            win = didWin(guessedNum, randomInt);
+
         }
+        System.out.println("took you " + guesses);
+
+    }
+
+    public static int generate() {
+
+        Random rand = new Random();
+        return rand.nextInt(100);
+
+    }
+
+    public static int userGuess() {
+
+        Scanner scan = new Scanner(System.in);
+        int guessedNum = scan.nextInt();
+        System.out.println("Guess the random number");
+        return guessedNum;
+
+    }
+
+    public static boolean didWin(int guessedNum, int randomInt) {
+
+        boolean result = false;
+
+        if (guessedNum > randomInt) {
+            System.out.println("Guess a smaller number.");
+        } else if (guessedNum < randomInt) {
+            System.out.println("Guess a bigger number.");
+        } else {
+            System.out.println("You guessed the number correctly");
+        }
+        return true;
+                
+    }
+
 }
-    

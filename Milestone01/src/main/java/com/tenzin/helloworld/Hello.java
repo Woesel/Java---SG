@@ -6,7 +6,7 @@
  */
 package com.tenzin.helloworld; //use com.username
 
-public class Hello {
+public class Hello {  
     public static void main(String[] args) {
         System.out.println("Hello, World!");
         System.out.println("My name is Tenzin!");
