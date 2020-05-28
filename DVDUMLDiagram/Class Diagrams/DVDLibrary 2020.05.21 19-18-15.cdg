@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="DVDLibrary">
+  <ClassDiagramComponents>
+    <Class name="App" package="com.tenzin.dvd" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="DVDController" package="com.tenzin.dvd.controller" visibility="public" xPosition="795.0" yPosition="63.0">
+      <Fields>
+        <Field name="dao" type="DVDDao" visibility="private"/>
+        <Field name="view" type="DVDView" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="DVDDao" name="dao"/>
+          <Argument type="DVDView" name="view"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="run" returnType="void" visibility="public"/>
+        <Method name="getMenuSelection" returnType="int" visibility="private"/>
+        <Method name="createDVD" returnType="void" visibility="private"/>
+        <Method name="listDVDs" returnType="void" visibility="private"/>
+        <Method name="viewParticularDVD" returnType="void" visibility="private"/>
+        <Method name="removeDVD" returnType="void" visibility="private"/>
+        <Method name="unknownCommand" returnType="void" visibility="private"/>
+        <Method name="exitMessage" returnType="void" visibility="private"/>
+        <Method name="editDVD" returnType="void" visibility="private"/>
+        <Method name="searchDVDByTitle" returnType="void" visibility="private"/>
+      </Methods>
+    </Class>
+    <Class name="DVDDaoException" package="com.tenzin.dvd.dao" visibility="public" xPosition="-50.0" yPosition="236.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="message"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="message"/>
+          <Argument type="Throwable" name="cause"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="DVDDaoImpl" package="com.tenzin.dvd.dao" visibility="public" xPosition="40.0" yPosition="753.0">
+      <Fields>
+        <Field name="dvds" type="Map&lt;String, DVD&gt;" visibility="private"/>
+        <Field name="DVD_FILE" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="DELIMETER" type="String" visibility="public" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="addDVD" returnType="DVD" visibility="public">
+          <Argument type="DVD" name="dvd"/>
+        </Method>
+        <Method name="getAllDVD" returnType="List&lt;DVD&gt;" visibility="public"/>
+        <Method name="getParticularDVD" returnType="DVD" visibility="public">
+          <Argument type="String" name="title"/>
+        </Method>
+        <Method name="removeDVD" returnType="DVD" visibility="public">
+          <Argument type="String" name="title"/>
+        </Method>
+        <Method name="unmarshallDVD" returnType="DVD" visibility="private">
+          <Argument type="String" name="DVDlibraryAsText"/>
+        </Method>
+        <Method name="loadLibrary" returnType="void" visibility="private"/>
+        <Method name="marshallDVD" returnType="String" visibility="private">
+          <Argument type="DVD" name="aDVD"/>
+        </Method>
+        <Method name="writeLibrary" returnType="void" visibility="private"/>
+      </Methods>
+    </Class>
+    <Class name="DVD" package="com.tenzin.dvd.dto" visibility="public" xPosition="655.0" yPosition="865.0">
+      <Fields>
+        <Field name="title" type="String" visibility="private"/>
+        <Field name="releaseDate" type="String" visibility="private"/>
+        <Field name="MPAARating" type="String" visibility="private"/>
+        <Field name="directorName" type="String" visibility="private"/>
+        <Field name="studio" type="String" visibility="private"/>
+        <Field name="userRating" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="title"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getTitle" returnType="String" visibility="public"/>
+        <Method name="getReleaseDate" returnType="String" visibility="public"/>
+        <Method name="setReleaseDate" returnType="void" visibility="public">
+          <Argument type="String" name="releaseDate"/>
+        </Method>
+        <Method name="getMPAARating" returnType="String" visibility="public"/>
+        <Method name="setMPAARating" returnType="void" visibility="public">
+          <Argument type="String" name="MPAARating"/>
+        </Method>
+        <Method name="getDirectorName" returnType="String" visibility="public"/>
+        <Method name="setDirectorName" returnType="void" visibility="public">
+          <Argument type="String" name="directorName"/>
+        </Method>
+        <Method name="getStudio" returnType="String" visibility="public"/>
+        <Method name="setStudio" returnType="void" visibility="public">
+          <Argument type="String" name="studio"/>
+        </Method>
+        <Method name="getUserRating" returnType="String" visibility="public"/>
+        <Method name="setUserRating" returnType="void" visibility="public">
+          <Argument type="String" name="userRating"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="DVDView" package="com.tenzin.dvd.ui" visibility="public" xPosition="1308.0" yPosition="236.0">
+      <Fields>
+        <Field name="io" type="UserIO" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="UserIO" name="io"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="printMenuAndGetSelection" returnType="int" visibility="public"/>
+        <Method name="getNewDVDInfo" returnType="DVD" visibility="public"/>
+        <Method name="displayCreateDVDBanner" returnType="void" visibility="public"/>
+        <Method name="displayCreateSuccessBanner" returnType="void" visibility="public"/>
+        <Method name="displayDVDList" returnType="void" visibility="public">
+          <Argument type="List&lt;DVD&gt;" name="dvdList"/>
+        </Method>
+        <Method name="displayAllDVDBanner" returnType="void" visibility="public"/>
+        <Method name="displayDVDBanner" returnType="void" visibility="public"/>
+        <Method name="getTitleChoice" returnType="String" visibility="public"/>
+        <Method name="displayParticularDVDInformation" returnType="void" visibility="public">
+          <Argument type="DVD" name="dvd"/>
+        </Method>
+        <Method name="displayRemoveDVDBanner" returnType="void" visibility="public"/>
+        <Method name="displayRemovedResult" returnType="void" visibility="public">
+          <Argument type="DVD" name="DVDRecord"/>
+        </Method>
+        <Method name="displayExitBanner" returnType="void" visibility="public"/>
+        <Method name="displayUnknownCommandBanner" returnType="void" visibility="public"/>
+        <Method name="displayErrorMessage" returnType="void" visibility="public">
+          <Argument type="String" name="errorMsg"/>
+        </Method>
+        <Method name="searchDVDByTitle" returnType="void" visibility="public">
+          <Argument type="DVD" name="dvd"/>
+        </Method>
+        <Method name="displayEditBanner" returnType="void" visibility="public"/>
+        <Method name="displayEditedBanner" returnType="void" visibility="public">
+          <Argument type="DVD" name="edit"/>
+        </Method>
+        <Method name="noSuchDVD" returnType="void" visibility="public"/>
+        <Method name="DVDToEditInfo" returnType="DVD" visibility="public">
+          <Argument type="DVD" name="DVDToEdit"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="UserIOConsoleImpl" package="com.tenzin.dvd.ui" visibility="public" xPosition="1645.0" yPosition="1045.0">
+      <Fields>
+        <Field name="console" type="Scanner" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="print" returnType="void" visibility="public">
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="readString" returnType="String" visibility="public">
+          <Argument type="String" name="msgPrompt"/>
+        </Method>
+        <Method name="readInt" returnType="int" visibility="public">
+          <Argument type="String" name="msgPrompt"/>
+        </Method>
+        <Method name="readInt" returnType="int" visibility="public">
+          <Argument type="String" name="msgPrompt"/>
+          <Argument type="int" name="min"/>
+          <Argument type="int" name="max"/>
+        </Method>
+        <Method name="readLong" returnType="long" visibility="public">
+          <Argument type="String" name="msgPrompt"/>
+        </Method>
+        <Method name="readLong" returnType="long" visibility="public">
+          <Argument type="String" name="msgPrompt"/>
+          <Argument type="long" name="min"/>
+          <Argument type="long" name="max"/>
+        </Method>
+        <Method name="readFloat" returnType="float" visibility="public">
+          <Argument type="String" name="msgPrompt"/>
+        </Method>
+        <Method name="readFloat" returnType="float" visibility="public">
+          <Argument type="String" name="msgPrompt"/>
+          <Argument type="float" name="min"/>
+          <Argument type="float" name="max"/>
+        </Method>
+        <Method name="readDouble" returnType="double" visibility="public">
+          <Argument type="String" name="msgPrompt"/>
+        </Method>
+        <Method name="readDouble" returnType="double" visibility="public">
+          <Argument type="String" name="msgPrompt"/>
+          <Argument type="double" name="min"/>
+          <Argument type="double" name="max"/>
+        </Method>
+        <Method name="enterNext" returnType="String" visibility="public">
+          <Argument type="String" name="msgPrompt"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Interface name="DVDDao" package="com.tenzin.dvd.dao" visibility="public" xPosition="213.0" yPosition="383.0">
+      <Methods>
+        <Method name="addDVD" returnType="DVD" visibility="package">
+          <Argument type="DVD" name="dvd"/>
+        </Method>
+        <Method name="getAllDVD" returnType="List&lt;DVD&gt;" visibility="package"/>
+        <Method name="getParticularDVD" returnType="DVD" visibility="package">
+          <Argument type="String" name="title"/>
+        </Method>
+        <Method name="removeDVD" returnType="DVD" visibility="package">
+          <Argument type="String" name="title"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Interface name="UserIO" package="com.tenzin.dvd.ui" visibility="public" xPosition="1709.0" yPosition="668.0">
+      <Methods>
+        <Method name="print" returnType="void" visibility="package">
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="readDouble" returnType="double" visibility="package">
+          <Argument type="String" name="prompt"/>
+        </Method>
+        <Method name="readDouble" returnType="double" visibility="package">
+          <Argument type="String" name="prompt"/>
+          <Argument type="double" name="min"/>
+          <Argument type="double" name="max"/>
+        </Method>
+        <Method name="readFloat" returnType="float" visibility="package">
+          <Argument type="String" name="prompt"/>
+        </Method>
+        <Method name="readFloat" returnType="float" visibility="package">
+          <Argument type="String" name="prompt"/>
+          <Argument type="float" name="min"/>
+          <Argument type="float" name="max"/>
+        </Method>
+        <Method name="readInt" returnType="int" visibility="package">
+          <Argument type="String" name="prompt"/>
+        </Method>
+        <Method name="readInt" returnType="int" visibility="package">
+          <Argument type="String" name="prompt"/>
+          <Argument type="int" name="min"/>
+          <Argument type="int" name="max"/>
+        </Method>
+        <Method name="readLong" returnType="long" visibility="package">
+          <Argument type="String" name="prompt"/>
+        </Method>
+        <Method name="readLong" returnType="long" visibility="package">
+          <Argument type="String" name="prompt"/>
+          <Argument type="long" name="min"/>
+          <Argument type="long" name="max"/>
+        </Method>
+        <Method name="readString" returnType="String" visibility="package">
+          <Argument type="String" name="prompt"/>
+        </Method>
+        <Method name="enterNext" returnType="String" visibility="public">
+          <Argument type="String" name="msgPrompt"/>
+        </Method>
+      </Methods>
+    </Interface>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation source="com.tenzin.dvd.dao.DVDDao" target="com.tenzin.dvd.dto.DVD" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="com.tenzin.dvd.ui.UserIOConsoleImpl" target="com.tenzin.dvd.ui.UserIO"/>
+    <UseRelation name="" source="com.tenzin.dvd.App" target="com.tenzin.dvd.dao.DVDDaoException" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="com.tenzin.dvd.dao.DVDDaoImpl" target="com.tenzin.dvd.dao.DVDDao"/>
+    <UseRelation source="com.tenzin.dvd.dao.DVDDaoImpl" target="com.tenzin.dvd.dto.DVD" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.tenzin.dvd.ui.DVDView" target="com.tenzin.dvd.dto.DVD" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="io" source="com.tenzin.dvd.ui.DVDView" target="com.tenzin.dvd.ui.UserIO" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="dao" source="com.tenzin.dvd.controller.DVDController" target="com.tenzin.dvd.dao.DVDDao" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="dvds" source="com.tenzin.dvd.dao.DVDDaoImpl" target="com.tenzin.dvd.dto.DVD" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="Map&lt;String, DVD&gt;"/>
+    <HasRelation name="view" source="com.tenzin.dvd.controller.DVDController" target="com.tenzin.dvd.ui.DVDView" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

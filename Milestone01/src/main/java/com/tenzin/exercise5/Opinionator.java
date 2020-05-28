@@ -15,7 +15,7 @@ public class Opinionator {
         System.out.println("I can't decide what animals I like the best.");
         System.out.println("I know! Random can decide FOR ME!");
 
-        int x = randomizer.nextInt(5); //This will only print random numbers from 0-4
+        int x = randomizer.nextInt(6); //The error was randomizer only printed random numbers from 0-5< I chn
 
         System.out.println("The number we chose was : " + x);
 

@@ -1,27 +1,45 @@
-
 package com.tenzin.interestcalculator;
 
+import java.text.NumberFormat;
 import java.util.Scanner;
 
 /**
  *
- * @author Tenzin Woesel
- * Apr 23, 2020
+ * @author Tenzin Woesel Apr 23, 2020
  */
 public class InterestCalculator {
+
     public static void main(String[] args) {
-        
-        System.out.print("How much do you want to invest? ");
+
         Scanner sc = new Scanner(System.in);
-        int money = Integer.parseInt(sc.nextLine());
+        
+
+        System.out.print("How much do you want to invest? ");
+        float initialAmount = Integer.parseInt(sc.nextLine());
         System.out.print("How many years are you investing? ");
-        int years = Integer.parseInt(sc.nextLine());
-        System.out.println("What is the annual interest rate % growth? ");
-        int interest = Integer.parseInt(sc.nextLine());
+        int time = Integer.parseInt(sc.nextLine());
+        System.out.print("What is the annual interest rate % growth? ");
+        float rate = Integer.parseInt(sc.nextLine());
+
+        System.out.println("\nCalculating...");
         
-        ///to be completed
-        
-        
+        float newAmount = initialAmount;
+        float beginning ;
+        float ending;
+        for (int i = 1; i <= time; i++) {
+            beginning = newAmount;
+            for (int j = 0; j < 4 ; j++) {
+                newAmount = newAmount * (1 + (rate / 4) / 100);
+            }
+            ending = newAmount;
+            double interest = ending - beginning;
+            NumberFormat format = NumberFormat.getCurrencyInstance();
+            System.out.println("year " + i + ":");
+            System.out.println("Began with " + format.format(beginning));
+            System.out.println("Earned " + format.format(interest));
+            System.out.println("Ended with " + format.format(ending) + ". \n");
+        }
+
     }
 
 }

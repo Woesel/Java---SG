@@ -1,6 +1,7 @@
 
 package com.tenzin.exercise3;
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 /**
@@ -16,15 +17,17 @@ public class HealthyHearts {
 
         Scanner userInput = new Scanner(System.in);
 
-        System.out.println("How old are you? ");
+        System.out.print("How old are you? ");
         age = userInput.nextInt();
 
         maxHR = 220 - age;
-        targetHRMin = 0.5 * maxHR;
-        targetHRMax = 0.85 * maxHR;
+        DecimalFormat df = new DecimalFormat("0");
+        targetHRMin = Math.round(0.5 * maxHR) ;
+     
+        targetHRMax = Math.round(0.85 * maxHR);
 
         System.out.println("Your maximum heart rate should be " + maxHR + " beats per minute.");
-        System.out.println("Your target HR zone is " + targetHRMin + " - " + targetHRMax + " beats per minute.");
+        System.out.println("Your target HR zone is " + df.format(targetHRMin) + " - " + df.format(targetHRMax) + " beats per minute.");
 
     }
 
