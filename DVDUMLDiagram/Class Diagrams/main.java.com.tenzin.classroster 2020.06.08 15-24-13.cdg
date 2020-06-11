@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="main.java.com.tenzin.classroster">
+  <ClassDiagramComponents>
+    <Class name="App" package="com.tenzin.classroster" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ClassRosterController" package="com.tenzin.classroster.controller" visibility="public" xPosition="2074.0" yPosition="53.0">
+      <Fields>
+        <Field name="view" type="ClassRosterView" visibility="private" isFinal="true"/>
+        <Field name="service" type="ClassRosterServiceLayer" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="ClassRosterServiceLayer" name="service"/>
+          <Argument type="ClassRosterView" name="view"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="run" returnType="void" visibility="public"/>
+        <Method name="getMenuSelection" returnType="int" visibility="private"/>
+        <Method name="createStudent" returnType="void" visibility="private"/>
+        <Method name="listStudents" returnType="void" visibility="private"/>
+        <Method name="viewStudent" returnType="void" visibility="private"/>
+        <Method name="removeStudent" returnType="void" visibility="private"/>
+        <Method name="unknownCommand" returnType="void" visibility="private"/>
+        <Method name="exitMessage" returnType="void" visibility="private"/>
+      </Methods>
+    </Class>
+    <Class name="ClassRosterAuditDaoFileImpl" package="com.tenzin.classroster.dao" visibility="public" xPosition="1297.0" yPosition="11.0">
+      <Fields>
+        <Field name="AUDIT_FILE" type="String" visibility="public" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="writeAuditEntry" returnType="void" visibility="public">
+          <Argument type="String" name="entry"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ClassRosterDaoFileImpl" package="com.tenzin.classroster.dao" visibility="public" xPosition="412.0" yPosition="285.0">
+      <Fields>
+        <Field name="students" type="Map&lt;String, Student&gt;" visibility="private"/>
+        <Field name="ROSTER_FILE" type="String" visibility="private" isFinal="true"/>
+        <Field name="DELIMETER" type="String" visibility="public" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="String" name="rosterTextFile"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="addStudent" returnType="Student" visibility="public">
+          <Argument type="String" name="studentId"/>
+          <Argument type="Student" name="student"/>
+        </Method>
+        <Method name="getAllStudents" returnType="List&lt;Student&gt;" visibility="public"/>
+        <Method name="getStudent" returnType="Student" visibility="public">
+          <Argument type="String" name="studentId"/>
+        </Method>
+        <Method name="removeStudent" returnType="Student" visibility="public">
+          <Argument type="String" name="studentId"/>
+        </Method>
+        <Method name="unmarshallStudent" returnType="Student" visibility="private">
+          <Argument type="String" name="studentAsText"/>
+        </Method>
+        <Method name="loadRoster" returnType="void" visibility="private"/>
+        <Method name="marshallStudent" returnType="String" visibility="private">
+          <Argument type="Student" name="aStudent"/>
+        </Method>
+        <Method name="writeRoster" returnType="void" visibility="private"/>
+      </Methods>
+    </Class>
+    <Class name="ClassRosterPersistenceException" package="com.tenzin.classroster.dao" visibility="public" xPosition="1633.0" yPosition="53.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="message"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="message"/>
+          <Argument type="Throwable" name="cause"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="Student" package="com.tenzin.classroster.dto" visibility="public" xPosition="678.0" yPosition="915.0">
+      <Fields>
+        <Field name="firstName" type="String" visibility="private"/>
+        <Field name="lastName" type="String" visibility="private"/>
+        <Field name="studentId" type="String" visibility="private"/>
+        <Field name="cohort" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="studentId"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getFirstName" returnType="String" visibility="public"/>
+        <Method name="setFirstName" returnType="void" visibility="public">
+          <Argument type="String" name="firstName"/>
+        </Method>
+        <Method name="getLastName" returnType="String" visibility="public"/>
+        <Method name="setLastName" returnType="void" visibility="public">
+          <Argument type="String" name="lastName"/>
+        </Method>
+        <Method name="getStudentId" returnType="String" visibility="public"/>
+        <Method name="getCohort" returnType="String" visibility="public"/>
+        <Method name="setCohort" returnType="void" visibility="public">
+          <Argument type="String" name="cohort"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="obj"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="ClassRosterDataValidationException" package="com.tenzin.classroster.service" visibility="public" xPosition="-70.0" yPosition="264.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="message"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="message"/>
+          <Argument type="Throwable" name="cause"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="ClassRosterDuplicateIdException" package="com.tenzin.classroster.service" visibility="public" xPosition="2619.0" yPosition="1039.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="message"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="message"/>
+          <Argument type="Throwable" name="cause"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="ClassRosterServiceLayerImpl" package="com.tenzin.classroster.service" visibility="public" xPosition="1031.0" yPosition="485.0">
+      <Fields>
+        <Field name="dao" type="ClassRosterDao" visibility="package"/>
+        <Field name="auditDao" type="ClassRosterAuditDao" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="ClassRosterDao" name="dao"/>
+          <Argument type="ClassRosterAuditDao" name="auditDao"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="createStudent" returnType="void" visibility="public">
+          <Argument type="Student" name="student"/>
+        </Method>
+        <Method name="getAllStudent" returnType="List&lt;Student&gt;" visibility="public"/>
+        <Method name="getStudent" returnType="Student" visibility="public">
+          <Argument type="String" name="studentId"/>
+        </Method>
+        <Method name="removeStudent" returnType="Student" visibility="public">
+          <Argument type="String" name="studentId"/>
+        </Method>
+        <Method name="validateStudentData" returnType="void" visibility="private">
+          <Argument type="Student" name="student"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ClassRosterView" package="com.tenzin.classroster.ui" visibility="public" xPosition="2206.0" yPosition="943.0">
+      <Fields>
+        <Field name="io" type="UserIO" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="UserIO" name="io"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="printMenuAndGetSelection" returnType="int" visibility="public"/>
+        <Method name="getNewStudentInfo" returnType="Student" visibility="public"/>
+        <Method name="displayCreateStudentBanner" returnType="void" visibility="public"/>
+        <Method name="displayCreateSuccessBanner" returnType="void" visibility="public"/>
+        <Method name="displayStudentList" returnType="void" visibility="public">
+          <Argument type="List&lt;Student&gt;" name="studentList"/>
+        </Method>
+        <Method name="displayDisplayAllBanner" returnType="void" visibility="public"/>
+        <Method name="displayDisplayStudentBanner" returnType="void" visibility="public"/>
+        <Method name="getStudentIdChoice" returnType="String" visibility="public"/>
+        <Method name="displayStudent" returnType="void" visibility="public">
+          <Argument type="Student" name="student"/>
+        </Method>
+        <Method name="displayRemoveStudentBanner" returnType="void" visibility="public"/>
+        <Method name="displayRemoveResult" returnType="void" visibility="public">
+          <Argument type="Student" name="studentRecord"/>
+        </Method>
+        <Method name="displayExitBanner" returnType="void" visibility="public"/>
+        <Method name="displayUnknownCommandBanner" returnType="void" visibility="public"/>
+        <Method name="displayErrorMessage" returnType="void" visibility="public">
+          <Argument type="String" name="errorMsg"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="UserIOConsoleImpl" package="com.tenzin.classroster.ui" visibility="public" xPosition="2669.0" yPosition="615.0">
+      <Fields>
+        <Field name="console" type="Scanner" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="print" returnType="void" visibility="public">
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="readString" returnType="String" visibility="public">
+          <Argument type="String" name="msgPrompt"/>
+        </Method>
+        <Method name="readInt" returnType="int" visibility="public">
+          <Argument type="String" name="msgPrompt"/>
+        </Method>
+        <Method name="readInt" returnType="int" visibility="public">
+          <Argument type="String" name="msgPrompt"/>
+          <Argument type="int" name="min"/>
+          <Argument type="int" name="max"/>
+        </Method>
+        <Method name="readLong" returnType="long" visibility="public">
+          <Argument type="String" name="msgPrompt"/>
+        </Method>
+        <Method name="readLong" returnType="long" visibility="public">
+          <Argument type="String" name="msgPrompt"/>
+          <Argument type="long" name="min"/>
+          <Argument type="long" name="max"/>
+        </Method>
+        <Method name="readFloat" returnType="float" visibility="public">
+          <Argument type="String" name="msgPrompt"/>
+        </Method>
+        <Method name="readFloat" returnType="float" visibility="public">
+          <Argument type="String" name="msgPrompt"/>
+          <Argument type="float" name="min"/>
+          <Argument type="float" name="max"/>
+        </Method>
+        <Method name="readDouble" returnType="double" visibility="public">
+          <Argument type="String" name="msgPrompt"/>
+        </Method>
+        <Method name="readDouble" returnType="double" visibility="public">
+          <Argument type="String" name="msgPrompt"/>
+          <Argument type="double" name="min"/>
+          <Argument type="double" name="max"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Interface name="ClassRosterAuditDao" package="com.tenzin.classroster.dao" visibility="public" xPosition="1347.0" yPosition="245.0">
+      <Methods>
+        <Method name="writeAuditEntry" returnType="void" visibility="public">
+          <Argument type="String" name="entry"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Interface name="ClassRosterDao" package="com.tenzin.classroster.dao" visibility="public" xPosition="599.0" yPosition="53.0">
+      <Methods>
+        <Method name="addStudent" returnType="Student" visibility="package">
+          <Argument type="String" name="studentId"/>
+          <Argument type="Student" name="student"/>
+        </Method>
+        <Method name="getAllStudents" returnType="List&lt;Student&gt;" visibility="package"/>
+        <Method name="getStudent" returnType="Student" visibility="package">
+          <Argument type="String" name="studentId"/>
+        </Method>
+        <Method name="removeStudent" returnType="Student" visibility="package">
+          <Argument type="String" name="studentId"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Interface name="ClassRosterServiceLayer" package="com.tenzin.classroster.service" visibility="public" xPosition="1859.0" yPosition="795.0">
+      <Methods>
+        <Method name="createStudent" returnType="void" visibility="package">
+          <Argument type="Student" name="student"/>
+        </Method>
+        <Method name="getAllStudent" returnType="List&lt;Student&gt;" visibility="package"/>
+        <Method name="getStudent" returnType="Student" visibility="package">
+          <Argument type="String" name="studentId"/>
+        </Method>
+        <Method name="removeStudent" returnType="Student" visibility="package">
+          <Argument type="String" name="studentId"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Interface name="UserIO" package="com.tenzin.classroster.ui" visibility="public" xPosition="2576.0" yPosition="193.0">
+      <Methods>
+        <Method name="print" returnType="void" visibility="package">
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="readDouble" returnType="double" visibility="package">
+          <Argument type="String" name="prompt"/>
+        </Method>
+        <Method name="readDouble" returnType="double" visibility="package">
+          <Argument type="String" name="prompt"/>
+          <Argument type="double" name="min"/>
+          <Argument type="double" name="max"/>
+        </Method>
+        <Method name="readFloat" returnType="float" visibility="package">
+          <Argument type="String" name="prompt"/>
+        </Method>
+        <Method name="readFloat" returnType="float" visibility="package">
+          <Argument type="String" name="prompt"/>
+          <Argument type="float" name="min"/>
+          <Argument type="float" name="max"/>
+        </Method>
+        <Method name="readInt" returnType="int" visibility="package">
+          <Argument type="String" name="prompt"/>
+        </Method>
+        <Method name="readInt" returnType="int" visibility="package">
+          <Argument type="String" name="prompt"/>
+          <Argument type="int" name="min"/>
+          <Argument type="int" name="max"/>
+        </Method>
+        <Method name="readLong" returnType="long" visibility="package">
+          <Argument type="String" name="prompt"/>
+        </Method>
+        <Method name="readLong" returnType="long" visibility="package">
+          <Argument type="String" name="prompt"/>
+          <Argument type="long" name="min"/>
+          <Argument type="long" name="max"/>
+        </Method>
+        <Method name="readString" returnType="String" visibility="package">
+          <Argument type="String" name="prompt"/>
+        </Method>
+      </Methods>
+    </Interface>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="students" source="com.tenzin.classroster.dao.ClassRosterDaoFileImpl" target="com.tenzin.classroster.dto.Student" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="Map&lt;String, Student&gt;"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="com.tenzin.classroster.dao.ClassRosterAuditDaoFileImpl" target="com.tenzin.classroster.dao.ClassRosterAuditDao"/>
+    <HasRelation name="view" source="com.tenzin.classroster.controller.ClassRosterController" target="com.tenzin.classroster.ui.ClassRosterView" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="com.tenzin.classroster.ui.UserIOConsoleImpl" target="com.tenzin.classroster.ui.UserIO"/>
+    <HasRelation name="io" source="com.tenzin.classroster.ui.ClassRosterView" target="com.tenzin.classroster.ui.UserIO" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.tenzin.classroster.dao.ClassRosterDaoFileImpl" target="com.tenzin.classroster.dto.Student" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.tenzin.classroster.dao.ClassRosterDao" target="com.tenzin.classroster.dto.Student" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="dao" source="com.tenzin.classroster.service.ClassRosterServiceLayerImpl" target="com.tenzin.classroster.dao.ClassRosterDao" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.tenzin.classroster.service.ClassRosterServiceLayer" target="com.tenzin.classroster.dto.Student" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.tenzin.classroster.ui.ClassRosterView" target="com.tenzin.classroster.dto.Student" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.tenzin.classroster.service.ClassRosterServiceLayerImpl" target="com.tenzin.classroster.dto.Student" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="auditDao" source="com.tenzin.classroster.service.ClassRosterServiceLayerImpl" target="com.tenzin.classroster.dao.ClassRosterAuditDao" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="service" source="com.tenzin.classroster.controller.ClassRosterController" target="com.tenzin.classroster.service.ClassRosterServiceLayer" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="com.tenzin.classroster.dao.ClassRosterDaoFileImpl" target="com.tenzin.classroster.dao.ClassRosterDao"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="com.tenzin.classroster.service.ClassRosterServiceLayerImpl" target="com.tenzin.classroster.service.ClassRosterServiceLayer"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

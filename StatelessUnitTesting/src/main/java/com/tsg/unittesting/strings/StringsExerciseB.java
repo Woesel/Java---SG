@@ -23,6 +23,13 @@ public class StringsExerciseB {
      * @return String triple trouble
      */
     public static String tripleIt(String theString){
-        throw new UnsupportedOperationException("Code not yet written...!");
+        String tripleTrouble = "";
+        
+        if(theString!=""){
+            tripleTrouble = theString.toLowerCase() + theString.toUpperCase()+ theString.toLowerCase();
+            return tripleTrouble;
+        }else{
+           return tripleTrouble;
+        }
     }
 }

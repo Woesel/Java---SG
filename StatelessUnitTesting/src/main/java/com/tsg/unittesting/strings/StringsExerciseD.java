@@ -1,7 +1,7 @@
-/*********************************
-* The Software Guild
-* Copyright (C) 2020 Wiley edu LLC - All Rights Reserved
-*********************************/
+/** *******************************
+ * The Software Guild
+ * Copyright (C) 2020 Wiley edu LLC - All Rights Reserved
+ ******************************** */
 package com.tsg.unittesting.strings;
 
 /**
@@ -9,21 +9,27 @@ package com.tsg.unittesting.strings;
  * @author ahill
  */
 public class StringsExerciseD {
-    
+
     /**
-     * Given a phrase string - turns the whole thing around.
-     * Return the original, but totally backwards to forwards!
+     * Given a phrase string - turns the whole thing around. Return the
+     * original, but totally backwards to forwards!
      *
-     * 
-     * Ex:
-     * simpleReverse( "fun times" ) ->  "semit nuf"
-     * simpleReverse( "llama llama duck" ) ->  "kcud amall amall"
-     * simpleReverse( "hannah" ) ->  "hannah"
-     * 
+     *
+     * Ex: simpleReverse( "fun times" ) -> "semit nuf" simpleReverse( "llama
+     * llama duck" ) -> "kcud amall amall" simpleReverse( "hannah" ) -> "hannah"
+     *
      * @param phrase
      * @return String backwards
      */
-    public static String simpleReverse(String phrase){
-        throw new UnsupportedOperationException("Code not yet written...!");
+    public static String simpleReverse(String phrase) {
+        String reversed = "";
+        if (phrase != "") {
+            for (int i = phrase.length() - 1; i >= 0; i--) {
+                reversed = reversed + phrase.charAt(i);
+
+            }
+            return reversed;
+        }
+        return reversed;
     }
 }

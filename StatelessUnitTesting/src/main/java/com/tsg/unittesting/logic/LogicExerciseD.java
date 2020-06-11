@@ -25,7 +25,13 @@ public class LogicExerciseD {
      * @return boolean
      */
     public static boolean isFirstTheFirst(char letterOne, char letterTwo) {
-        throw new UnsupportedOperationException("Code not yet written...!");
+        char char1 = Character.toLowerCase(letterOne);
+        char char2 = Character.toLowerCase(letterTwo);
+        if(char1<char2){
+            return true;
+        }else{
+            return false;
+        }
     }
 
 }

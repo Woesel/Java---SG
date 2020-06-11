@@ -1,4 +1,5 @@
 /*********************************
+/*********************************
 * The Software Guild
 * Copyright (C) 2020 Wiley edu LLC - All Rights Reserved
 *********************************/
@@ -26,6 +27,11 @@ public class StringsExerciseF {
      * @return String word
      */
     public static String longestWord(String aPhrase){
-        throw new UnsupportedOperationException("Code not yet written...!");
+        String word="";
+        if(aPhrase!=""){
+            return word;
+        }
+        
+        return word;
     }
 }

@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="VendingMachine">
+  <ClassDiagramComponents>
+    <Class name="App" package="com.tenzin.vendingmachine" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="VendingMachineController" package="com.tenzin.vendingmachine.controller" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields>
+        <Field name="view" type="VendingMachineView" visibility="private"/>
+        <Field name="io" type="UserIO" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="run" returnType="void" visibility="public"/>
+        <Method name="getMenuSelection" returnType="int" visibility="private"/>
+      </Methods>
+    </Class>
+    <Interface name="VendingMachineAuditDao" package="com.tenzin.vendingmachine.dao" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Methods/>
+    </Interface>
+    <Class name="VendingMachineAuditDaoFileImpl" package="com.tenzin.vendingmachine.dao" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Interface name="VendingMachineDao" package="com.tenzin.vendingmachine.dao" visibility="public" xPosition="1220.0" yPosition="20.0">
+      <Methods>
+        <Method name="displayItems" returnType="List&lt;VendingMachineItems&gt;" visibility="package"/>
+        <Method name="displaySelectedItem" returnType="VendingMachineItems" visibility="package">
+          <Argument type="String" name="itemName"/>
+          <Argument type="VendingMachineItems" name="vm"/>
+        </Method>
+        <Method name="getItem" returnType="VendingMachineItems" visibility="package">
+          <Argument type="String" name="itemName"/>
+        </Method>
+        <Method name="returnChange" returnType="Change" visibility="package"/>
+      </Methods>
+    </Interface>
+    <Class name="VendingMachineDaoFileImpl" package="com.tenzin.vendingmachine.dao" visibility="public" xPosition="1520.0" yPosition="20.0">
+      <Fields>
+        <Field name="vm" type="Map&lt;String, VendingMachineItems&gt;" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="displayItems" returnType="List&lt;VendingMachineItems&gt;" visibility="public"/>
+        <Method name="displaySelectedItem" returnType="VendingMachineItems" visibility="public">
+          <Argument type="String" name="itemName"/>
+          <Argument type="VendingMachineItems" name="vm"/>
+        </Method>
+        <Method name="getItem" returnType="VendingMachineItems" visibility="public">
+          <Argument type="String" name="itemName"/>
+        </Method>
+        <Method name="returnChange" returnType="Change" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Change" package="com.tenzin.vendingmachine.dto" visibility="public" xPosition="1820.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Enum name="ChangeAmounts" package="com.tenzin.vendingmachine.dto" visibility="public" xPosition="2120.0" yPosition="20.0">
+      <Literals>
+        <Literal name="CENT"/>
+        <Literal name="NICKEL"/>
+        <Literal name="DIME"/>
+        <Literal name="QUARTER"/>
+      </Literals>
+    </Enum>
+    <Class name="VendingMachineItems" package="com.tenzin.vendingmachine.dto" visibility="public" xPosition="20.0" yPosition="420.0">
+      <Fields>
+        <Field name="itemName" type="String" visibility="package"/>
+        <Field name="itemCost" type="BigDecimal" visibility="package"/>
+        <Field name="numOfItems" type="int" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="itemName"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getItemName" returnType="String" visibility="public"/>
+        <Method name="getItemCost" returnType="BigDecimal" visibility="public"/>
+        <Method name="setItemCost" returnType="void" visibility="public">
+          <Argument type="BigDecimal" name="itemCost"/>
+        </Method>
+        <Method name="getNumOfItems" returnType="int" visibility="public"/>
+        <Method name="setNumOfItems" returnType="void" visibility="public">
+          <Argument type="int" name="numOfItems"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="VendingMachineInsufficientFundsException" package="com.tenzin.vendingmachine.service" visibility="public" xPosition="320.0" yPosition="420.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="VendingMachineNoItemInventoryException" package="com.tenzin.vendingmachine.service" visibility="public" xPosition="620.0" yPosition="420.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Interface name="VendingMachineService" package="com.tenzin.vendingmachine.service" visibility="public" xPosition="920.0" yPosition="420.0">
+      <Methods/>
+    </Interface>
+    <Class name="VendingMachineServiceImpl" package="com.tenzin.vendingmachine.service" visibility="public" xPosition="1220.0" yPosition="420.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Interface name="UserIO" package="com.tenzin.vendingmachine.ui" visibility="public" xPosition="1520.0" yPosition="420.0">
+      <Methods>
+        <Method name="print" returnType="void" visibility="package">
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="readDouble" returnType="double" visibility="package">
+          <Argument type="String" name="prompt"/>
+        </Method>
+        <Method name="readDouble" returnType="double" visibility="package">
+          <Argument type="String" name="prompt"/>
+          <Argument type="double" name="min"/>
+          <Argument type="double" name="max"/>
+        </Method>
+        <Method name="readFloat" returnType="float" visibility="package">
+          <Argument type="String" name="prompt"/>
+        </Method>
+        <Method name="readFloat" returnType="float" visibility="package">
+          <Argument type="String" name="prompt"/>
+          <Argument type="float" name="min"/>
+          <Argument type="float" name="max"/>
+        </Method>
+        <Method name="readInt" returnType="int" visibility="package">
+          <Argument type="String" name="prompt"/>
+        </Method>
+        <Method name="readInt" returnType="int" visibility="package">
+          <Argument type="String" name="prompt"/>
+          <Argument type="int" name="min"/>
+          <Argument type="int" name="max"/>
+        </Method>
+        <Method name="readLong" returnType="long" visibility="package">
+          <Argument type="String" name="prompt"/>
+        </Method>
+        <Method name="readLong" returnType="long" visibility="package">
+          <Argument type="String" name="prompt"/>
+          <Argument type="long" name="min"/>
+          <Argument type="long" name="max"/>
+        </Method>
+        <Method name="readString" returnType="String" visibility="package">
+          <Argument type="String" name="prompt"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Class name="UserIOConsoleImpl" package="com.tenzin.vendingmachine.ui" visibility="public" xPosition="1820.0" yPosition="420.0">
+      <Fields>
+        <Field name="console" type="Scanner" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="print" returnType="void" visibility="public">
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="readString" returnType="String" visibility="public">
+          <Argument type="String" name="msgPrompt"/>
+        </Method>
+        <Method name="readInt" returnType="int" visibility="public">
+          <Argument type="String" name="msgPrompt"/>
+        </Method>
+        <Method name="readInt" returnType="int" visibility="public">
+          <Argument type="String" name="msgPrompt"/>
+          <Argument type="int" name="min"/>
+          <Argument type="int" name="max"/>
+        </Method>
+        <Method name="readLong" returnType="long" visibility="public">
+          <Argument type="String" name="msgPrompt"/>
+        </Method>
+        <Method name="readLong" returnType="long" visibility="public">
+          <Argument type="String" name="msgPrompt"/>
+          <Argument type="long" name="min"/>
+          <Argument type="long" name="max"/>
+        </Method>
+        <Method name="readFloat" returnType="float" visibility="public">
+          <Argument type="String" name="msgPrompt"/>
+        </Method>
+        <Method name="readFloat" returnType="float" visibility="public">
+          <Argument type="String" name="msgPrompt"/>
+          <Argument type="float" name="min"/>
+          <Argument type="float" name="max"/>
+        </Method>
+        <Method name="readDouble" returnType="double" visibility="public">
+          <Argument type="String" name="msgPrompt"/>
+        </Method>
+        <Method name="readDouble" returnType="double" visibility="public">
+          <Argument type="String" name="msgPrompt"/>
+          <Argument type="double" name="min"/>
+          <Argument type="double" name="max"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="VendingMachineView" package="com.tenzin.vendingmachine.ui" visibility="public" xPosition="2120.0" yPosition="420.0">
+      <Fields>
+        <Field name="io" type="UserIO" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="printMenuAndGetSelection" returnType="int" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation source="com.tenzin.vendingmachine.dao.VendingMachineDao" target="com.tenzin.vendingmachine.dto.VendingMachineItems" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="com.tenzin.vendingmachine.service.VendingMachineServiceImpl" target="com.tenzin.vendingmachine.service.VendingMachineService"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="com.tenzin.vendingmachine.dao.VendingMachineDaoFileImpl" target="com.tenzin.vendingmachine.dao.VendingMachineDao"/>
+    <HasRelation name="io" source="com.tenzin.vendingmachine.controller.VendingMachineController" target="com.tenzin.vendingmachine.ui.UserIO" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="com.tenzin.vendingmachine.ui.UserIOConsoleImpl" target="com.tenzin.vendingmachine.ui.UserIO"/>
+    <UseRelation source="com.tenzin.vendingmachine.dao.VendingMachineDaoFileImpl" target="com.tenzin.vendingmachine.dto.VendingMachineItems" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.tenzin.vendingmachine.dao.VendingMachineDaoFileImpl" target="com.tenzin.vendingmachine.dto.Change" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="com.tenzin.vendingmachine.dao.VendingMachineAuditDaoFileImpl" target="com.tenzin.vendingmachine.dao.VendingMachineAuditDao"/>
+    <HasRelation name="io" source="com.tenzin.vendingmachine.ui.VendingMachineView" target="com.tenzin.vendingmachine.ui.UserIO" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="view" source="com.tenzin.vendingmachine.controller.VendingMachineController" target="com.tenzin.vendingmachine.ui.VendingMachineView" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.tenzin.vendingmachine.dao.VendingMachineDao" target="com.tenzin.vendingmachine.dto.Change" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="vm" source="com.tenzin.vendingmachine.dao.VendingMachineDaoFileImpl" target="com.tenzin.vendingmachine.dto.VendingMachineItems" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="Map&lt;String, VendingMachineItems&gt;"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

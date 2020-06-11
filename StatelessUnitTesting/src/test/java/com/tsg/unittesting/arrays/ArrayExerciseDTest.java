@@ -17,22 +17,22 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author ttibe
  */
 public class ArrayExerciseDTest {
-    
+
     public ArrayExerciseDTest() {
     }
-    
+
     @BeforeAll
     public static void setUpClass() {
     }
-    
+
     @AfterAll
     public static void tearDownClass() {
     }
-    
+
     @BeforeEach
     public void setUp() {
     }
-    
+
     @AfterEach
     public void tearDown() {
     }
@@ -47,8 +47,42 @@ public class ArrayExerciseDTest {
         int expResult = 0;
         int result = ArrayExerciseD.pointFree(numbers);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
-    
+    @Test
+    public void testPoint22() {
+        System.out.println("pointFree");
+        
+        //Arrange
+        double[] numbers = {1.1, .22};
+        int expResult = 22;
+        //Act
+        int result = ArrayExerciseD.pointFree(numbers);
+        //Assert
+        assertEquals(expResult, result);
+    }
+    @Test
+    public void testPoint5005() {
+        System.out.println("pointFree");
+        
+        //Arrange
+        double[] numbers = {.039 , 20 , .005005};
+        int expResult = 5005;
+        //Act
+        int result = ArrayExerciseD.pointFree(numbers);
+        //Assert
+        assertEquals(expResult, result);
+    }
+    @Test
+    public void testPointNegativeNumbers() {
+        System.out.println("pointFree");
+        
+        //Arrange
+        double[] numbers = {-9.9 , -700 , -.5};
+        int expResult = -5;
+        //Act
+        int result = ArrayExerciseD.pointFree(numbers);
+        //Assert
+        assertEquals(expResult, result);
+    }
+
 }

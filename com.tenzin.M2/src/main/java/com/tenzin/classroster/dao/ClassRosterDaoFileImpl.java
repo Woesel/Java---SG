@@ -21,7 +21,15 @@ public class ClassRosterDaoFileImpl implements ClassRosterDao {
 
     private Map<String, Student> students = new HashMap<>();
 
-    public static final String ROSTER_FILE = "roster.txt";
+    private final String ROSTER_FILE;
+
+    public ClassRosterDaoFileImpl() {
+        ROSTER_FILE = "roster.txt";
+    }
+
+    public ClassRosterDaoFileImpl(String rosterTextFile) {
+        ROSTER_FILE = rosterTextFile;
+    }
     public static final String DELIMETER = "::";
 
     @Override

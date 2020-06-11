@@ -269,15 +269,16 @@
     </Interface>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
+    <HasRelation name="dvds" source="com.tenzin.dvd.dao.DVDDaoImpl" target="com.tenzin.dvd.dto.DVD" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="Map&lt;String, DVD&gt;"/>
     <UseRelation source="com.tenzin.dvd.dao.DVDDao" target="com.tenzin.dvd.dto.DVD" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="com.tenzin.dvd.ui.UserIOConsoleImpl" target="com.tenzin.dvd.ui.UserIO"/>
     <UseRelation name="" source="com.tenzin.dvd.App" target="com.tenzin.dvd.dao.DVDDaoException" sourceCardinality="1..1" targetCardinality="1..1"/>
     <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="com.tenzin.dvd.dao.DVDDaoImpl" target="com.tenzin.dvd.dao.DVDDao"/>
-    <UseRelation source="com.tenzin.dvd.dao.DVDDaoImpl" target="com.tenzin.dvd.dto.DVD" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="com.tenzin.dvd.ui.DVDView" target="com.tenzin.dvd.dto.DVD" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="io" source="com.tenzin.dvd.ui.DVDView" target="com.tenzin.dvd.ui.UserIO" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="dao" source="com.tenzin.dvd.controller.DVDController" target="com.tenzin.dvd.dao.DVDDao" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="dvds" source="com.tenzin.dvd.dao.DVDDaoImpl" target="com.tenzin.dvd.dto.DVD" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="Map&lt;String, DVD&gt;"/>
+    <IsRelation name="is" source="com.tenzin.dvd.dao.DVDDaoImpl" target="com.tenzin.dvd.dto.DVD"/>
     <HasRelation name="view" source="com.tenzin.dvd.controller.DVDController" target="com.tenzin.dvd.ui.DVDView" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="com.tenzin.dvd.ui.UserIOConsoleImpl" target="com.tenzin.dvd.ui.UserIO"/>
+    <UseRelation source="com.tenzin.dvd.dao.DVDDaoImpl" target="com.tenzin.dvd.dto.DVD" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="dao" source="com.tenzin.dvd.controller.DVDController" target="com.tenzin.dvd.dao.DVDDao" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.tenzin.dvd.ui.DVDView" target="com.tenzin.dvd.dto.DVD" sourceCardinality="1..1" targetCardinality="1..1"/>
   </ClassDiagramRelations>
 </ClassDiagram>
