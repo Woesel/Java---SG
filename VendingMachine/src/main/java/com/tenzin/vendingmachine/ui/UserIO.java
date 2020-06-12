@@ -1,5 +1,7 @@
 package com.tenzin.vendingmachine.ui;
 
+import java.math.BigDecimal;
+
 /**
  *
  * @author Tenzin Woesel
@@ -25,4 +27,7 @@ public interface UserIO {
     long readLong(String prompt, long min, long max);
 
     String readString(String prompt);
+
+    BigDecimal readBigDecimal(String prompt);
+
 }

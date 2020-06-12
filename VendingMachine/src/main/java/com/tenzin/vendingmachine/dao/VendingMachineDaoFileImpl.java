@@ -35,6 +35,14 @@ public class VendingMachineDaoFileImpl implements VendingMachineDao {
     public static final String DELIMETER = "::";
 
     @Override
+    public VendingMachineItems addItem(String itemName, VendingMachineItems item) throws VendingMachinePersistenceException {
+        loadInventory();
+        VendingMachineItems newItem = vm.put(itemName, item);
+        writeInventory();
+        return newItem;
+    }
+
+    @Override
     public List<VendingMachineItems> getAllItems() throws VendingMachinePersistenceException {
         loadInventory();
         return new ArrayList(vm.values());
@@ -44,23 +52,6 @@ public class VendingMachineDaoFileImpl implements VendingMachineDao {
     public VendingMachineItems getSelectedItems(String itemName) throws VendingMachinePersistenceException {
         loadInventory();
         return vm.get(itemName);
-    }
-
-    @Override
-    public VendingMachineItems purchasedItem(String itemName, BigDecimal insertedAmount) throws VendingMachinePersistenceException {
-        loadInventory();
-        
-
-        return vm.get(itemName);
-
-    }
-
-    @Override
-    public VendingMachineItems updateItem(String itemName, VendingMachineItems item) throws VendingMachinePersistenceException {
-        loadInventory();
-        VendingMachineItems updateItem = vm.put(itemName, item);
-        writeInventory();
-        return updateItem;
     }
 
     private VendingMachineItems unmarshallItem(String itemAsText) {
@@ -73,12 +64,12 @@ public class VendingMachineDaoFileImpl implements VendingMachineDao {
         itemFromFile.setItemCost(new BigDecimal(itemTokens[1]));
 
         itemFromFile.setNumOfItems(Integer.parseInt(itemTokens[2]));
-        
+
         return itemFromFile;
 
     }
 
-    private void loadInventory() throws VendingMachinePersistenceException {
+    public void loadInventory() throws VendingMachinePersistenceException {
 
         Scanner scanner;
 
@@ -114,7 +105,7 @@ public class VendingMachineDaoFileImpl implements VendingMachineDao {
         return itemAsText;
     }
 
-    private void writeInventory() throws VendingMachinePersistenceException {
+    public void writeInventory() throws VendingMachinePersistenceException {
 
         PrintWriter out;
 

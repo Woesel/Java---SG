@@ -12,29 +12,27 @@ import java.math.BigDecimal;
  * @author ttibe
  */
 public enum ChangeAmounts {
+
+//    CENT(new BigDecimal("1")), NICKEL(new BigDecimal("5")), DIME(new BigDecimal("10")), QUARTER(new BigDecimal("25"));
+//
+//    BigDecimal price;
+//
+//    ChangeAmounts(BigDecimal price) {
+//        this.price = price;
+//    }
+//
+//    public BigDecimal getPrice() {
+//        return price;
+//    }
+    CENT(1),NICKEL(5),DIME(10),QUARTER(25);
     
-    CENT(new BigDecimal("0.01")),NICKEL(new BigDecimal("0.05")),DIME(new BigDecimal("0.10")),QUARTER(new BigDecimal("0.25"));
+    int price;
     
-    BigDecimal price;
-    
-    ChangeAmounts(BigDecimal price){
+    ChangeAmounts(int price){
         this.price = price;
     }
     
-    public BigDecimal getPrice(){
+    public int getPrice(){
         return price;
     }
-//    CENT(1),NICKEL(5),DIME(10),QUARTER(25);
-//    
-//    int price;
-//    
-//    ChangeAmounts(int price){
-//        this.price = price;
-//    }
-//    
-//    public int getPrice(){
-//        return price;
-//    }
 }
-
-

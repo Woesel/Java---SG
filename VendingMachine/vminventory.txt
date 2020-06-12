@@ -1,0 +1,5 @@
+Water::2.69::0
+KurKure::0.99::3
+Wai Wai::1.99::13
+Dairy Milk::2.99::10
+M&Ms::1.99::1

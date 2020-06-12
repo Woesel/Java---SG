@@ -10,11 +10,10 @@ import java.util.List;
  */
 public interface VendingMachineDao {
 
+    VendingMachineItems addItem(String itemName, VendingMachineItems item) throws VendingMachinePersistenceException;
+
     List<VendingMachineItems> getAllItems() throws VendingMachinePersistenceException;
 
     VendingMachineItems getSelectedItems(String itemName) throws VendingMachinePersistenceException;
 
-    VendingMachineItems purchasedItem(String itemName, BigDecimal insertedAmount) throws VendingMachinePersistenceException;
-    
-    VendingMachineItems updateItem(String itemName, VendingMachineItems item) throws VendingMachinePersistenceException;
 }

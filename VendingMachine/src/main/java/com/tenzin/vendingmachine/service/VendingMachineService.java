@@ -1,4 +1,3 @@
-
 package com.tenzin.vendingmachine.service;
 
 import com.tenzin.vendingmachine.dao.VendingMachinePersistenceException;
@@ -8,17 +7,22 @@ import java.util.List;
 
 /**
  *
- * @author Tenzin Woesel
- * Jun 8, 2020
+ * @author Tenzin Woesel Jun 8, 2020
  */
 public interface VendingMachineService {
-    
-     List<VendingMachineItems> getAllItems() throws VendingMachinePersistenceException;
-    
-    VendingMachineItems getSelectedItem(String itemName) throws VendingMachineNoItemInventoryException, VendingMachinePersistenceException, VendingMachineDataValidationException;
-    
-    VendingMachineItems purchasedItem(String itemName, BigDecimal insertedAmount);
-    
-    Change returnChange(BigDecimal itemCost, BigDecimal insertedAmount) throws VendingMachineInsufficientFundsException;
+
+    void updateItems(VendingMachineItems item) throws VendingMachinePersistenceException, VendingMachineDataValidationException;
+
+    List<VendingMachineItems> getAllItems() throws VendingMachinePersistenceException;
+
+//    VendingMachineItems getSelectedItem(String itemName) throws VendingMachineNoItemInventoryException, VendingMachinePersistenceException, VendingMachineDataValidationException;
+
+    VendingMachineItems purchasedItem(String itemName, BigDecimal insertedAmount) 
+            throws VendingMachineNoItemInventoryException, 
+            VendingMachinePersistenceException, 
+            VendingMachineDataValidationException,
+            VendingMachineInsufficientFundsException;
+
+    Change calculateChange(BigDecimal itemCost, BigDecimal insertedAmount);
 
 }

@@ -6,13 +6,14 @@
 package com.tenzin.vendingmachine.dao;
 
 import com.tenzin.vendingmachine.dto.VendingMachineItems;
-import java.io.FileWriter;
 import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -23,9 +24,15 @@ import org.junit.jupiter.api.Test;
  */
 public class VendingMachineDaoFileImplTest {
 
+    private String TEST_FILE = "testInventory.txt";
+
     VendingMachineDao testDao;
+    VendingMachineDaoFileImpl load;
+
+    private Map<String, VendingMachineItems> vm = new HashMap<>();
 
     public VendingMachineDaoFileImplTest() {
+
     }
 
     @BeforeAll
@@ -38,9 +45,9 @@ public class VendingMachineDaoFileImplTest {
 
     @BeforeEach
     public void setUp() throws Exception {
-        String testFile = "testInventory.txt";
-        new FileWriter(testFile);
-        testDao = new VendingMachineDaoFileImpl();
+        load = new VendingMachineDaoFileImpl();
+        testDao = new VendingMachineDaoFileImpl(TEST_FILE);
+
     }
 
     @AfterEach
@@ -48,27 +55,47 @@ public class VendingMachineDaoFileImplTest {
     }
 
     @Test
-    public void testgetAllItemsMethod() {
-
-        //ARRANGE
-        String itemName;
-
-        VendingMachineItems item = new VendingMachineItems("ChewingGum", BigDecimal.TEN, 10);
-        VendingMachineItems item1 = new VendingMachineItems("ChewingGum1", BigDecimal.TEN, 10);
-        VendingMachineItems item2 = new VendingMachineItems("ChewingGum2", BigDecimal.ZERO, 10);
+    public void testgetAllItemsMethod() throws VendingMachinePersistenceException {
+        //Arrange
+        load.loadInventory();
         
-       
 
-        //ACT
         List<VendingMachineItems> allItem = testDao.getAllItems();
         //ASSERT
 
         assertEquals(3, allItem.size(), "List of items should have 3 items.");
 
-        assertTrue(testDao.getAllItems().contains(item));
-        assertTrue(testDao.getAllItems().contains(item1));
-        assertTrue(testDao.getAllItems().contains(item2));
+        assertNotNull(allItem);
+    }
 
+    @Test
+    public void testUpdateItem() throws VendingMachinePersistenceException {
+        //ARRANGE
+        BigDecimal price = new BigDecimal("10.99");
+
+        //ACT
+//        List<VendingMachineItems> allItem = testDao.getAllItems();
+        VendingMachineItems updatedItem = testDao.addItem("Chew", new VendingMachineItems("Chew", price, 10));
+        updatedItem.setItemCost(price);
+
+        load.loadInventory();
+
+        assertEquals("Chew", updatedItem.getItemName());
+        assertEquals(new BigDecimal("10.99"), updatedItem.getItemCost());
+        assertEquals(10, updatedItem.getNumOfItems(), "The updated item should be 20");
+
+    }
+
+    @Test
+    public void testGetSelectedItem() throws VendingMachinePersistenceException {
+        //ARRANGE
+        load.loadInventory();
+        //ACT
+        VendingMachineItems retrievedItem = testDao.getSelectedItems("Chew");
+        //ASSERT
+        assertEquals("Chew", retrievedItem.getItemName());
+        assertEquals(new BigDecimal("10.99"), retrievedItem.getItemCost());
+        assertEquals(10, retrievedItem.getNumOfItems());
     }
 
 }
