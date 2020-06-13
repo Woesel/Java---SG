@@ -2,6 +2,7 @@ package com.tenzin.vendingmachine.controller;
 
 import com.tenzin.vendingmachine.dao.VendingMachinePersistenceException;
 import com.tenzin.vendingmachine.dto.VendingMachineItems;
+import com.tenzin.vendingmachine.service.Change;
 import com.tenzin.vendingmachine.service.VendingMachineDataValidationException;
 import com.tenzin.vendingmachine.service.VendingMachineInsufficientFundsException;
 import com.tenzin.vendingmachine.service.VendingMachineNoItemInventoryException;
@@ -11,6 +12,7 @@ import com.tenzin.vendingmachine.ui.UserIOConsoleImpl;
 import com.tenzin.vendingmachine.ui.VendingMachineView;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -91,21 +93,33 @@ public class VendingMachineController {
 //    }
 
     private void purchaseItem() throws VendingMachineNoItemInventoryException, VendingMachinePersistenceException, VendingMachineDataValidationException, VendingMachineInsufficientFundsException {
+        boolean keepGoing = true;
+        while (keepGoing) {
+            try {
+                BigDecimal insertedAmount = view.insertAmount();
+                String itemName = view.chooseItemToBuy();
 
-        BigDecimal insertedAmount = view.insertAmount();
-        String itemName = view.chooseItemToBuy();
+                VendingMachineItems item = service.purchasedItem(itemName, insertedAmount);
 
-        service.purchasedItem(itemName, insertedAmount);
+                Map changeMap = service.calculateChange(item.getItemCost(), insertedAmount);
+
+                view.purchaseItem(itemName, changeMap);
+                keepGoing = false;
+            } catch (VendingMachinePersistenceException
+                    | VendingMachineDataValidationException
+                    | VendingMachineInsufficientFundsException
+                    | VendingMachineNoItemInventoryException e) {
+                view.displayErrorMessage(e.getMessage());
+            }
+        }
 
     }
 
-    public void getSelectedItems() throws VendingMachinePersistenceException {
-        view.getSelectedItemBanner();
-        String itemName = view.chooseItemToBuy();
-        //BigDecimal change = view.
-        VendingMachineItems itemBought = service.purchasedItem(itemName, change);
-
-        view.purchaseItem(itemName, change);
-    }
-
+//    public void getSelectedItems() throws VendingMachinePersistenceException {
+//        view.getSelectedItemBanner();
+//        String itemName = view.chooseItemToBuy();
+//        //BigDecimal change = view.
+//        VendingMachineItems itemBought = service.purchasedItem(itemName, change);
+//
+//    }
 }

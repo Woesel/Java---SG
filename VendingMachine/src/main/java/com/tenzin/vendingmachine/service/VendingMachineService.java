@@ -4,6 +4,7 @@ import com.tenzin.vendingmachine.dao.VendingMachinePersistenceException;
 import com.tenzin.vendingmachine.dto.VendingMachineItems;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -11,7 +12,7 @@ import java.util.List;
  */
 public interface VendingMachineService {
 
-    void updateItems(VendingMachineItems item) throws VendingMachinePersistenceException, VendingMachineDataValidationException;
+   // void updateItems(VendingMachineItems item) throws VendingMachinePersistenceException, VendingMachineDataValidationException;
 
     List<VendingMachineItems> getAllItems() throws VendingMachinePersistenceException;
 
@@ -23,6 +24,6 @@ public interface VendingMachineService {
             VendingMachineDataValidationException,
             VendingMachineInsufficientFundsException;
 
-    Change calculateChange(BigDecimal itemCost, BigDecimal insertedAmount);
+    Map calculateChange(BigDecimal itemCost, BigDecimal insertedAmount);
 
 }

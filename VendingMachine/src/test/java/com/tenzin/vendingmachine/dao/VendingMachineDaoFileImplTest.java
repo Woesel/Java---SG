@@ -6,6 +6,7 @@
 package com.tenzin.vendingmachine.dao;
 
 import com.tenzin.vendingmachine.dto.VendingMachineItems;
+import java.io.FileWriter;
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
@@ -14,6 +15,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -24,10 +26,7 @@ import org.junit.jupiter.api.Test;
  */
 public class VendingMachineDaoFileImplTest {
 
-    private String TEST_FILE = "testInventory.txt";
-
     VendingMachineDao testDao;
-    VendingMachineDaoFileImpl load;
 
     private Map<String, VendingMachineItems> vm = new HashMap<>();
 
@@ -45,8 +44,9 @@ public class VendingMachineDaoFileImplTest {
 
     @BeforeEach
     public void setUp() throws Exception {
-        load = new VendingMachineDaoFileImpl();
-        testDao = new VendingMachineDaoFileImpl(TEST_FILE);
+        String testFile = "testInventory.txt";
+        new FileWriter(testFile);
+        testDao = new VendingMachineDaoFileImpl(testFile);
 
     }
 
@@ -55,47 +55,60 @@ public class VendingMachineDaoFileImplTest {
     }
 
     @Test
-    public void testgetAllItemsMethod() throws VendingMachinePersistenceException {
+    public void testAddGetAllItemsMethod() throws VendingMachinePersistenceException {
         //Arrange
-        load.loadInventory();
-        
+        String itemName = "Something";
+        String itemName1 = "KurKure";
+        String itemName2 = "Some";
+        VendingMachineItems item = new VendingMachineItems(itemName, new BigDecimal("2.99"), 10);
+        VendingMachineItems item1 = new VendingMachineItems(itemName1, new BigDecimal("3.99"), 10);
+        VendingMachineItems item2 = new VendingMachineItems(itemName2, new BigDecimal("1.99"), 2);
+
+        testDao.addItem(itemName, item);
+        testDao.addItem(itemName1, item1);
+        testDao.addItem(itemName2, item2);
 
         List<VendingMachineItems> allItem = testDao.getAllItems();
         //ASSERT
 
-        assertEquals(3, allItem.size(), "List of items should have 3 items.");
-
         assertNotNull(allItem);
-    }
-
-    @Test
-    public void testUpdateItem() throws VendingMachinePersistenceException {
-        //ARRANGE
-        BigDecimal price = new BigDecimal("10.99");
-
-        //ACT
-//        List<VendingMachineItems> allItem = testDao.getAllItems();
-        VendingMachineItems updatedItem = testDao.addItem("Chew", new VendingMachineItems("Chew", price, 10));
-        updatedItem.setItemCost(price);
-
-        load.loadInventory();
-
-        assertEquals("Chew", updatedItem.getItemName());
-        assertEquals(new BigDecimal("10.99"), updatedItem.getItemCost());
-        assertEquals(10, updatedItem.getNumOfItems(), "The updated item should be 20");
-
+        assertEquals(3, allItem.size(), "List of items should have 3 items.");
+        assertTrue(allItem.contains(item), "List should contain 'Something'");
+        assertTrue(allItem.contains(item1), "List should contain 'KurKure'");
+        assertTrue(allItem.contains(item2), "List should contain 'Some'");
     }
 
     @Test
     public void testGetSelectedItem() throws VendingMachinePersistenceException {
         //ARRANGE
-        load.loadInventory();
+        String itemName = "Something";
+        String itemName1 = "KurKure";
+        String itemName2 = "Some";
+        VendingMachineItems item = new VendingMachineItems(itemName, new BigDecimal("2.99"), 10);
+        VendingMachineItems item1 = new VendingMachineItems(itemName1, new BigDecimal("3.99"), 10);
+        VendingMachineItems item2 = new VendingMachineItems(itemName2, new BigDecimal("1.99"), 2);
+
+        testDao.addItem(itemName, item);
+        testDao.addItem(itemName1, item1);
+        testDao.addItem(itemName2, item2);
+
         //ACT
-        VendingMachineItems retrievedItem = testDao.getSelectedItems("Chew");
-        //ASSERT
-        assertEquals("Chew", retrievedItem.getItemName());
-        assertEquals(new BigDecimal("10.99"), retrievedItem.getItemCost());
-        assertEquals(10, retrievedItem.getNumOfItems());
+        VendingMachineItems selectedItem = testDao.getSelectedItems(itemName);
+        VendingMachineItems selectedItem1 = testDao.getSelectedItems(itemName1);
+        VendingMachineItems selectedItem2 = testDao.getSelectedItems(itemName2);
+
+        assertEquals(item.getItemName(), selectedItem.getItemName(), "Name should be the same.");
+        assertEquals(item.getItemCost(), selectedItem.getItemCost(), "Cost should be the same.");
+        assertEquals(item.getNumOfItems(), selectedItem.getNumOfItems(), "Quantity should be same.");
+
+        assertEquals(item1.getItemName(), selectedItem1.getItemName(), "Name should be the same.");
+        assertEquals(item1.getItemCost(), selectedItem1.getItemCost(), "Cost should be the same.");
+        assertEquals(item1.getNumOfItems(), selectedItem1.getNumOfItems(), "Quantity should be same.");
+
+        assertEquals(item2.getItemName(), selectedItem2.getItemName(), "'Something' should be present.");
+        assertEquals(item2.getItemCost(), selectedItem2.getItemCost(), "'Cost should be the same.");
+        assertEquals(item2.getNumOfItems(), selectedItem2.getNumOfItems(), "Quantity should be same.");
+
     }
 
 }

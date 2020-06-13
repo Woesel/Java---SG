@@ -1,9 +1,11 @@
 package com.tenzin.vendingmachine.ui;
 
 import com.tenzin.vendingmachine.dto.VendingMachineItems;
-import com.tenzin.vendingmachine.service.Change;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -20,10 +22,10 @@ public class VendingMachineView {
     public int printMenuAndGetSelection() {
         io.print("Following are the items that you can get from this vending machine.");
         io.print("***************************************");
-        io.print("\t\tDairy Milk $2.99");
-        io.print("\t\tM&Ms $1.99");
+        io.print("\t\t Dairy Milk $2.99");
+        io.print("\t\t M&Ms $1.99");
         io.print("\t\t Wai Wai $3.69");
-        io.print("\t\t Water $1.89");
+        io.print("\t\t Water $2.69");
         io.print("\t\t KurKure $1.19");
         io.print("***************************************");
         io.print("1. Insert money here to buy an item.");
@@ -33,7 +35,11 @@ public class VendingMachineView {
     }
 
     public BigDecimal insertAmount() {
-        BigDecimal insertedAmount = io.readBigDecimal("Please enter the dollar amount for purchasing an item");
+        BigDecimal insertedAmount = null;
+        do {
+            insertedAmount = io.readBigDecimal("Please enter the dollar amount for purchasing an item");
+        } while (insertedAmount == null);
+
         return insertedAmount;
     }
 
@@ -44,7 +50,7 @@ public class VendingMachineView {
 
     public void displayItemList(List<VendingMachineItems> itemList) {
         io.print("***************************************");
-        io.print("Following are the items available to purchase. Please enter the name of the item to buy it.");
+        io.print("Please enter the name of the item you want to purchase.");
         itemList.stream().map((currentItem) -> String.format("%s: %s ", currentItem.getItemName(), currentItem.getItemCost())).forEachOrdered((itemInfo) -> {
             io.print(itemInfo);
 
@@ -62,11 +68,22 @@ public class VendingMachineView {
         io.print(errorMsg);
     }
 
-    public void purchaseItem(String itemName, Change change) {
+    public void purchaseItem(String itemName, Map change) {
+        boolean showChange = false;
+
+        ArrayList<Integer> valuesList = new ArrayList(change.values());
+        for (Integer integer : valuesList) {
+            if (integer > 0) {
+                showChange = true;
+            }
+        }
 
         if (itemName != null) {
-            io.print(itemName + "is the item you purchased");
-            
+            io.print(itemName + " is the item you purchased");
+            if (showChange) {
+                io.print(" Here is your change back." + change);
+            }
+
         } else {
             io.print("No such items available");
         }
