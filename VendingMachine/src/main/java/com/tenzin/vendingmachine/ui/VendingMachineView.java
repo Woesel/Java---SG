@@ -44,13 +44,14 @@ public class VendingMachineView {
     }
 
     public String chooseItemToBuy() {
+
         String itemName = io.readString("Please enter the name of the item you want to buy.");
+
         return itemName;
     }
 
     public void displayItemList(List<VendingMachineItems> itemList) {
         io.print("***************************************");
-        io.print("Please enter the name of the item you want to purchase.");
         itemList.stream().map((currentItem) -> String.format("%s: %s ", currentItem.getItemName(), currentItem.getItemCost())).forEachOrdered((itemInfo) -> {
             io.print(itemInfo);
 
@@ -81,7 +82,7 @@ public class VendingMachineView {
         if (itemName != null) {
             io.print(itemName + " is the item you purchased");
             if (showChange) {
-                io.print(" Here is your change back." + change);
+                io.print("Here is your change back." + change);
             }
 
         } else {
@@ -93,8 +94,7 @@ public class VendingMachineView {
         io.print("======Following are the items available to purchase=====");
     }
 
-    public void getSelectedItemBanner() {
-        io.print("You have selected this item to buy.");
-    }
-
+//    public void getSelectedItemBanner() {
+//        io.print("You have selected this item to buy.");
+//    }
 }

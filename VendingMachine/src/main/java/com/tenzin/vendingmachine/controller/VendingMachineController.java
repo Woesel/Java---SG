@@ -2,7 +2,6 @@ package com.tenzin.vendingmachine.controller;
 
 import com.tenzin.vendingmachine.dao.VendingMachinePersistenceException;
 import com.tenzin.vendingmachine.dto.VendingMachineItems;
-import com.tenzin.vendingmachine.service.Change;
 import com.tenzin.vendingmachine.service.VendingMachineDataValidationException;
 import com.tenzin.vendingmachine.service.VendingMachineInsufficientFundsException;
 import com.tenzin.vendingmachine.service.VendingMachineNoItemInventoryException;
@@ -56,13 +55,10 @@ public class VendingMachineController {
             }
             io.print("Good Bye");
 
-        } catch (VendingMachinePersistenceException e) {
-            view.displayErrorMessage(e.getMessage());
-        } catch (VendingMachineDataValidationException e) {
-            view.displayErrorMessage(e.getMessage());
-        } catch (VendingMachineInsufficientFundsException e) {
-            view.displayErrorMessage(e.getMessage());
-        } catch (VendingMachineNoItemInventoryException e) {
+        } catch (VendingMachinePersistenceException
+                | VendingMachineDataValidationException
+                | VendingMachineInsufficientFundsException
+                | VendingMachineNoItemInventoryException e) {
             view.displayErrorMessage(e.getMessage());
         }
     }
@@ -115,11 +111,5 @@ public class VendingMachineController {
 
     }
 
-//    public void getSelectedItems() throws VendingMachinePersistenceException {
-//        view.getSelectedItemBanner();
-//        String itemName = view.chooseItemToBuy();
-//        //BigDecimal change = view.
-//        VendingMachineItems itemBought = service.purchasedItem(itemName, change);
-//
-//    }
+
 }

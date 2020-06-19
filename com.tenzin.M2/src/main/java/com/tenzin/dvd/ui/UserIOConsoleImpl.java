@@ -99,7 +99,7 @@ public class UserIOConsoleImpl implements UserIO {
         return result;
     }
 
-        @Override
+    @Override
     public String pressEnterToContinue(String msgPrompt) {
         System.out.println(msgPrompt);
         return console.nextLine();

@@ -54,10 +54,6 @@ public class VendingMachineServiceImpl implements VendingMachineService {
         return filteredItems;
     }
 
-//    @Override
-//    public VendingMachineItems getSelectedItem(String itemName) throws VendingMachineNoItemInventoryException, VendingMachinePersistenceException, VendingMachineDataValidationException {
-//        return dao.getSelectedItems(itemName);
-//    }
     @Override
     public VendingMachineItems purchasedItem(String itemName, BigDecimal insertedAmount)
             throws VendingMachineNoItemInventoryException,
@@ -65,7 +61,6 @@ public class VendingMachineServiceImpl implements VendingMachineService {
             VendingMachineDataValidationException,
             VendingMachineInsufficientFundsException {
 
-        //Change change = new Change();
         VendingMachineItems item = dao.getSelectedItems(itemName);
         validateVendingMachineData(item);
         if (item.getNumOfItems() == 0) {
@@ -73,19 +68,12 @@ public class VendingMachineServiceImpl implements VendingMachineService {
             throw new VendingMachineNoItemInventoryException("Item not available in the inventory.");
 
         }
-        
-        if (insertedAmount.compareTo(item.getItemCost()) == 0) {
+        if (insertedAmount.compareTo(item.getItemCost()) >= 0) {
             item.setNumOfItems(item.getNumOfItems() - 1);
             dao.addItem(itemName, item);
             auditDao.writeAuditEntry(itemName + " was successfuly purchased.");
             return item;
-        } else if (insertedAmount.compareTo(item.getItemCost()) > 0) {
-            insertedAmount = insertedAmount.subtract(item.getItemCost());
-            item.setNumOfItems(item.getNumOfItems() - 1);
-            dao.addItem(itemName, item);
-//            change = calculateChange(item.getItemCost(), insertedAmount);
-            auditDao.writeAuditEntry(itemName + " was purchased successfuly.");
-            return item;
+
         } else {
 
             throw new VendingMachineInsufficientFundsException("You have entered $" + insertedAmount + " please enter more money.");

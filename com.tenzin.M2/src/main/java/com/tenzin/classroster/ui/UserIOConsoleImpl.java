@@ -1,14 +1,14 @@
-
 package com.tenzin.classroster.ui;
 
-/*********************************
-* The Software Guild
-* Copyright (C) 2020 Wiley edu LLC - All Rights Reserved
-*********************************/
-
 /**
- * TSG Official Implementation of the UserIO interface
- * May your view be ever in your favor!
+ * *******************************
+ * The Software Guild Copyright (C) 2020 Wiley edu LLC - All Rights Reserved
+ * *******************************
+ */
+/**
+ * TSG Official Implementation of the UserIO interface May your view be ever in
+ * your favor!
+ *
  * @author ahill
  */
 import java.util.Scanner;
@@ -19,7 +19,7 @@ public class UserIOConsoleImpl implements UserIO {
 
     /**
      *
-     * A very simple method that takes in a message to display on the console 
+     * A very simple method that takes in a message to display on the console
      * and then waits for a integer answer from the user to return.
      *
      * @param msg - String of information to display to the user.
@@ -32,10 +32,11 @@ public class UserIOConsoleImpl implements UserIO {
 
     /**
      *
-     * A simple method that takes in a message to display on the console, 
-     * and then waits for an answer from the user to return.
+     * A simple method that takes in a message to display on the console, and
+     * then waits for an answer from the user to return.
      *
-     * @param msgPrompt - String explaining what information you want from the user.
+     * @param msgPrompt - String explaining what information you want from the
+     * user.
      * @return the answer to the message as string
      */
     @Override
@@ -46,11 +47,12 @@ public class UserIOConsoleImpl implements UserIO {
 
     /**
      *
-     * A simple method that takes in a message to display on the console, 
-     * and continually reprompts the user with that message until they enter an integer
-     * to be returned as the answer to that message.
+     * A simple method that takes in a message to display on the console, and
+     * continually reprompts the user with that message until they enter an
+     * integer to be returned as the answer to that message.
      *
-     * @param msgPrompt - String explaining what information you want from the user.
+     * @param msgPrompt - String explaining what information you want from the
+     * user.
      * @return the answer to the message as integer
      */
     @Override
@@ -74,14 +76,17 @@ public class UserIOConsoleImpl implements UserIO {
 
     /**
      *
-     * A slightly more complex method that takes in a message to display on the console, 
-     * and continually reprompts the user with that message until they enter an integer
-     * within the specified min/max range to be returned as the answer to that message.
+     * A slightly more complex method that takes in a message to display on the
+     * console, and continually reprompts the user with that message until they
+     * enter an integer within the specified min/max range to be returned as the
+     * answer to that message.
      *
-     * @param msgPrompt - String explaining what information you want from the user.
+     * @param msgPrompt - String explaining what information you want from the
+     * user.
      * @param min - minimum acceptable value for return
      * @param max - maximum acceptable value for return
-     * @return an integer value as an answer to the message prompt within the min/max range
+     * @return an integer value as an answer to the message prompt within the
+     * min/max range
      */
     @Override
     public int readInt(String msgPrompt, int min, int max) {
@@ -95,11 +100,12 @@ public class UserIOConsoleImpl implements UserIO {
 
     /**
      *
-     * A simple method that takes in a message to display on the console, 
-     * and continually reprompts the user with that message until they enter a long
+     * A simple method that takes in a message to display on the console, and
+     * continually reprompts the user with that message until they enter a long
      * to be returned as the answer to that message.
      *
-     * @param msgPrompt - String explaining what information you want from the user.
+     * @param msgPrompt - String explaining what information you want from the
+     * user.
      * @return the answer to the message as long
      */
     @Override
@@ -114,14 +120,17 @@ public class UserIOConsoleImpl implements UserIO {
     }
 
     /**
-     * A slightly more complex method that takes in a message to display on the console, 
-     * and continually reprompts the user with that message until they enter a double
-     * within the specified min/max range to be returned as the answer to that message.
+     * A slightly more complex method that takes in a message to display on the
+     * console, and continually reprompts the user with that message until they
+     * enter a double within the specified min/max range to be returned as the
+     * answer to that message.
      *
-     * @param msgPrompt - String explaining what information you want from the user.
+     * @param msgPrompt - String explaining what information you want from the
+     * user.
      * @param min - minimum acceptable value for return
      * @param max - maximum acceptable value for return
-     * @return an long value as an answer to the message prompt within the min/max range
+     * @return an long value as an answer to the message prompt within the
+     * min/max range
      */
     @Override
     public long readLong(String msgPrompt, long min, long max) {
@@ -135,11 +144,12 @@ public class UserIOConsoleImpl implements UserIO {
 
     /**
      *
-     * A simple method that takes in a message to display on the console, 
-     * and continually reprompts the user with that message until they enter a float
+     * A simple method that takes in a message to display on the console, and
+     * continually reprompts the user with that message until they enter a float
      * to be returned as the answer to that message.
      *
-     * @param msgPrompt - String explaining what information you want from the user.
+     * @param msgPrompt - String explaining what information you want from the
+     * user.
      * @return the answer to the message as float
      */
     @Override
@@ -155,14 +165,17 @@ public class UserIOConsoleImpl implements UserIO {
 
     /**
      *
-     * A slightly more complex method that takes in a message to display on the console, 
-     * and continually reprompts the user with that message until they enter a float
-     * within the specified min/max range to be returned as the answer to that message.
+     * A slightly more complex method that takes in a message to display on the
+     * console, and continually reprompts the user with that message until they
+     * enter a float within the specified min/max range to be returned as the
+     * answer to that message.
      *
-     * @param msgPrompt - String explaining what information you want from the user.
+     * @param msgPrompt - String explaining what information you want from the
+     * user.
      * @param min - minimum acceptable value for return
      * @param max - maximum acceptable value for return
-     * @return an float value as an answer to the message prompt within the min/max range
+     * @return an float value as an answer to the message prompt within the
+     * min/max range
      */
     @Override
     public float readFloat(String msgPrompt, float min, float max) {
@@ -176,11 +189,12 @@ public class UserIOConsoleImpl implements UserIO {
 
     /**
      *
-     * A simple method that takes in a message to display on the console, 
-     * and continually reprompts the user with that message until they enter a double
-     * to be returned as the answer to that message.
+     * A simple method that takes in a message to display on the console, and
+     * continually reprompts the user with that message until they enter a
+     * double to be returned as the answer to that message.
      *
-     * @param msgPrompt - String explaining what information you want from the user.
+     * @param msgPrompt - String explaining what information you want from the
+     * user.
      * @return the answer to the message as double
      */
     @Override
@@ -196,14 +210,17 @@ public class UserIOConsoleImpl implements UserIO {
 
     /**
      *
-     * A slightly more complex method that takes in a message to display on the console, 
-     * and continually reprompts the user with that message until they enter a double
-     * within the specified min/max range to be returned as the answer to that message.
+     * A slightly more complex method that takes in a message to display on the
+     * console, and continually reprompts the user with that message until they
+     * enter a double within the specified min/max range to be returned as the
+     * answer to that message.
      *
-     * @param msgPrompt - String explaining what information you want from the user.
+     * @param msgPrompt - String explaining what information you want from the
+     * user.
      * @param min - minimum acceptable value for return
      * @param max - maximum acceptable value for return
-     * @return an double value as an answer to the message prompt within the min/max range
+     * @return an double value as an answer to the message prompt within the
+     * min/max range
      */
     @Override
     public double readDouble(String msgPrompt, double min, double max) {

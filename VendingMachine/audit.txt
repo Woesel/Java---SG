@@ -9,3 +9,11 @@
 2020-06-12T19:07:25.758169200 : Wai Wai was purchased successfuly.
 2020-06-12T19:17:02.932210800 : KurKure was purchased successfuly.
 2020-06-12T19:35:53.613500400 : Wai Wai was purchased successfuly.
+2020-06-13T16:08:47.233055300 : Wai Wai was successfuly purchased.
+2020-06-13T16:09:05.812037100 : Wai Wai was successfuly purchased.
+2020-06-13T17:02:15.627443300 : KurKure was successfuly purchased.
+2020-06-13T18:35:40.209942900 : Wai Wai was successfuly purchased.
+2020-06-13T19:01:38.750341600 : Wai Wai was successfuly purchased.
+2020-06-13T21:09:10.429265400 : Wai Wai was successfuly purchased.
+2020-06-13T23:26:13.750356 : Wai Wai was successfuly purchased.
+2020-06-14T02:41:56.143264400 : Dairy Milk was successfuly purchased.
