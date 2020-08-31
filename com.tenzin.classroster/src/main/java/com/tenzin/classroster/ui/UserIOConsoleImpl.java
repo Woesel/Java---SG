@@ -12,8 +12,7 @@ package com.tenzin.classroster.ui;
  * @author ahill
  */
 import java.util.Scanner;
-import org.springframework.stereotype.Component;
-@Component
+
 public class UserIOConsoleImpl implements UserIO {
 
     final private Scanner console = new Scanner(System.in);

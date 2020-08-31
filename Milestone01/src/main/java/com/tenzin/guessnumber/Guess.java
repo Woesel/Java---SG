@@ -31,7 +31,7 @@ public class Guess {
 
         }
         System.out.println("took you " + guesses);
-
+        
     }
 
     public static int generate() {

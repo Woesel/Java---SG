@@ -4,13 +4,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
-import org.springframework.stereotype.Component;
 
 /**
  *
  * @author Tenzin Woesel May 26, 2020
  */
-@Component
 public class ClassRosterAuditDaoFileImpl implements ClassRosterAuditDao {
 
     public static final String AUDIT_FILE = "audit.txt";

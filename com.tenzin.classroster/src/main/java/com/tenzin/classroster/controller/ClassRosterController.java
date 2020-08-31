@@ -14,7 +14,6 @@ import org.springframework.stereotype.Component;
  *
  * @author Tenzin Woesel May 10, 2020
  */
-@Component
 public class ClassRosterController {
 
     private final ClassRosterView view;
@@ -22,7 +21,6 @@ public class ClassRosterController {
 
     private ClassRosterServiceLayer service;
     
-    @Autowired
     public ClassRosterController(ClassRosterServiceLayer service, ClassRosterView view) {
         this.service = service;
         this.view = view;
@@ -73,7 +71,7 @@ public class ClassRosterController {
         view.displayCreateStudentBanner();
         boolean hasErrors = false;
         do {
-            Student currentStudent = view.getNewStudentInfo();
+                Student currentStudent = view.getNewStudentInfo();
             try {
                 service.createStudent(currentStudent);
                 view.displayCreateSuccessBanner();

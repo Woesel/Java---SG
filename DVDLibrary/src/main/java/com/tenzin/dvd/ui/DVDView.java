@@ -138,7 +138,7 @@ public class DVDView {
         io.print("=====Edit DVD=====");
     }
 
-    public void displayEditedBanner(DVD edit) {
+    public void displayEditedBanner() {
         io.print("DVD successfully edited.");
     }
 

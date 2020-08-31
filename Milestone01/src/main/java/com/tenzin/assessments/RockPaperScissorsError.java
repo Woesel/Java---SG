@@ -57,7 +57,7 @@ public class RockPaperScissorsError {
 
     public static void main(String[] args) {
 
-        int userRound, compChoice;
+        int userRound, compChoice,userChoice=0;
         String playAgain;
 
         Scanner userChoice1 = new Scanner(System.in);
@@ -78,10 +78,10 @@ public class RockPaperScissorsError {
                     getUserChoice(userChoice1);
                     System.out.println(userChoice1);
                     if (userChoice == 1 || userChoice == 2 || userChoice == 3) {
-                        choice = true;
+                        boolean choice = true;
                     } else {
                         System.out.println("Invalid choice.");
-                        choice = false;
+                        boolean choice = false;
                     }
 
                     System.out.println("Round " + i + " :");
@@ -90,7 +90,7 @@ public class RockPaperScissorsError {
                     compChoice = rand.nextInt(3) + 1; //computer chooses a random number between 1 -3
                     //System.out.println(compChoice);
 
-                    if (userChoice1 == compChoice) {
+                    if (userChoice1.equals(compChoice)) {
 
                         System.out.println("Computer chose the same.");
                         System.out.println("\nIt's a tie.");
@@ -168,7 +168,7 @@ public class RockPaperScissorsError {
 
             }
             System.out.println("Do you want to play again? (y/n)");
-            playAgain = sc.nextLine().toLowerCase();
+            playAgain = userChoice1.nextLine().toLowerCase();
 
         } while (playAgain.equalsIgnoreCase("y"));          // using do-while to loop through the code again.
 

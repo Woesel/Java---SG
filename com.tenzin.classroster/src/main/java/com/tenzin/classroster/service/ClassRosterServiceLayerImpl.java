@@ -5,19 +5,16 @@ import com.tenzin.classroster.dao.ClassRosterDao;
 import com.tenzin.classroster.dao.ClassRosterPersistenceException;
 import com.tenzin.classroster.dto.Student;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 /**
  *
  * @author Tenzin Woesel May 26, 2020
  */
-@Component
 public class ClassRosterServiceLayerImpl implements ClassRosterServiceLayer {
 
     ClassRosterDao dao;
     private ClassRosterAuditDao auditDao;
-    @Autowired
+
     public ClassRosterServiceLayerImpl(ClassRosterDao dao, ClassRosterAuditDao auditDao) {
         this.dao = dao;
         this.auditDao = auditDao;
@@ -42,7 +39,7 @@ public class ClassRosterServiceLayerImpl implements ClassRosterServiceLayer {
         dao.addStudent(student.getStudentId(), student);
 
         //The student was successfully created, now write to the audit log
-        auditDao.writeAuditEntry("Student " + student.getStudentId() + " CREATED.");
+//        auditDao.writeAuditEntry("Student " + student.getStudentId() + " CREATED.");
     }
 
     @Override
@@ -60,7 +57,7 @@ public class ClassRosterServiceLayerImpl implements ClassRosterServiceLayer {
         Student removedStudent = dao.removeStudent(studentId);
 
         //Write to the audit log
-        auditDao.writeAuditEntry("Student " + studentId + " REMOVED.");
+//        auditDao.writeAuditEntry("Student " + studentId + " REMOVED.");
         return removedStudent;
     }
 

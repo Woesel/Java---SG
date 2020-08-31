@@ -9,7 +9,7 @@ import java.util.List;
  * @author Kyle David Rudy
  */
 public class BookDaoMemoryImpl implements BookDao {
-    
+        
     private List<Book> books = new ArrayList<>();
 
     @Override

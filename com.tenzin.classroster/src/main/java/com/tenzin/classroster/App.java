@@ -23,15 +23,15 @@ public class App {
 //                = new ClassRosterController(myService, myView);
 //        controller.run();
 
-//        ApplicationContext ctx
-//                = new ClassPathXmlApplicationContext("applicationContext.xml");
-//        ClassRosterController controller
-//                = ctx.getBean("controller", ClassRosterController.class);
-        AnnotationConfigApplicationContext appContext = new AnnotationConfigApplicationContext();
-        appContext.scan("com.tenzin.classroster");
-        appContext.refresh();
+        ApplicationContext ctx
+                = new ClassPathXmlApplicationContext("applicationContext.xml");
         ClassRosterController controller
-                = appContext.getBean("classRosterController", ClassRosterController.class);
+                = ctx.getBean("controller", ClassRosterController.class);
+//        AnnotationConfigApplicationContext appContext = new AnnotationConfigApplicationContext();
+//        appContext.scan("com.tenzin.classroster");
+//        appContext.refresh();
+//        ClassRosterController controller
+//                = appContext.getBean("classRosterController", ClassRosterController.class);
         controller.run();
     }
 

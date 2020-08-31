@@ -25,7 +25,7 @@ public class VendingMachineDaoFileImpl implements VendingMachineDao {
     private final String INVENTORY_FILE;
 
     public VendingMachineDaoFileImpl() {
-        INVENTORY_FILE = "vminventory.txt";
+        INVENTORY_FILE = "Item\\vminventory.txt";
     }
 
     public VendingMachineDaoFileImpl(String inventoryTextFile) {
@@ -105,22 +105,45 @@ public class VendingMachineDaoFileImpl implements VendingMachineDao {
         return itemAsText;
     }
 
-    public void writeInventory() throws VendingMachinePersistenceException {
+//    public void writeInventory() throws VendingMachinePersistenceException {
+//
+//        PrintWriter out;
+//
+//        try {
+//            out = new PrintWriter(new FileWriter(INVENTORY_FILE));
+//        } catch (IOException e) {
+//            throw new VendingMachinePersistenceException("Could not save item data.", e);
+//        }
+//
+//        String itemAsText;
+//
+//        List<VendingMachineItems> itemList = new ArrayList(vm.values());
+//
+//        for (VendingMachineItems currentItem : itemList) {
+//
+//            itemAsText = marshallItem(currentItem);
+//            out.println(itemAsText);
+//            out.flush();
+//        }
+//        out.close();
+//    }
+    
+    private void writeInventory() throws VendingMachinePersistenceException {
 
         PrintWriter out;
-
+        
+        
         try {
             out = new PrintWriter(new FileWriter(INVENTORY_FILE));
         } catch (IOException e) {
-            throw new VendingMachinePersistenceException("Could not save item data.", e);
+            throw new VendingMachinePersistenceException("Could not save order data.");
+
         }
 
         String itemAsText;
 
-        List<VendingMachineItems> itemList = new ArrayList(vm.values());
-
-        for (VendingMachineItems currentItem : itemList) {
-
+        List<VendingMachineItems> orderList = new ArrayList(vm.values());
+        for (VendingMachineItems currentItem : orderList) {
             itemAsText = marshallItem(currentItem);
             out.println(itemAsText);
             out.flush();

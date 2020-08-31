@@ -2,18 +2,15 @@ package com.tenzin.classroster.ui;
 
 import com.tenzin.classroster.dto.Student;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 /**
  *
  * @author Tenzin Woesel May 10, 2020
  */
-@Component
 public class ClassRosterView {
 
     private final UserIO io;
-    @Autowired
+
     public ClassRosterView(UserIO io) {
         this.io = io;
     }

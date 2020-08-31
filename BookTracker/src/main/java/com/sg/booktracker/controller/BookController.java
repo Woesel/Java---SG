@@ -39,6 +39,8 @@ public class BookController {
                     }
                     break;
                 case 3: //add
+//                    int booknumber = service.getbooknumber();
+//                    Book thebook = view.getNewBook(booNumebr);
                     Book newBook = view.getNewBook();
                     service.addBook(newBook);
                     view.displayAddSuccess();

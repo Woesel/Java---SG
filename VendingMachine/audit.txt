@@ -17,3 +17,8 @@
 2020-06-13T21:09:10.429265400 : Wai Wai was successfuly purchased.
 2020-06-13T23:26:13.750356 : Wai Wai was successfuly purchased.
 2020-06-14T02:41:56.143264400 : Dairy Milk was successfuly purchased.
+2020-07-17T22:41:49.105808500 : Water was successfuly purchased.
+2020-07-17T22:45:15.539466400 : Water was successfuly purchased.
+2020-07-17T23:02:03.088079400 : Water was successfuly purchased.
+2020-07-17T23:03:42.033190300 : Water was successfuly purchased.
+2020-07-17T23:07:28.606617100 : Water was successfuly purchased.

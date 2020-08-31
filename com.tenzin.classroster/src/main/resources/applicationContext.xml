@@ -23,21 +23,40 @@
     </bean>
    
     <bean id="classRosterDao" 
-         class="com.tenzin.classroster.dao.ClassRosterDaoFileImpl"/>
+          class="com.tenzin.classroster.dao.ClassRosterDaoFileImpl"/>
    
     <bean id="auditDao" 
-         class="com.tenzin.classroster.dao.ClassRosterAuditDaoFileImpl"/>
+          class="com.tenzin.classroster.dao.ClassRosterAuditDaoFileImpl"/>
    
     <bean id="serviceLayer" 
-         class="com.tenzin.classroster.service.ClassRosterServiceLayerImpl">
+          class="com.tenzin.classroster.service.ClassRosterServiceLayerImpl">
         <constructor-arg ref="classRosterDao"/>
         <constructor-arg ref="auditDao"/>           
     </bean>
    
     <bean id="controller" 
-         class="com.tenzin.classroster.controller.ClassRosterController">
+          class="com.tenzin.classroster.controller.ClassRosterController">
         <constructor-arg ref="serviceLayer"/>
         <constructor-arg ref="view"/>
     </bean>
+    
+    <bean id="loggingAdvice" class="com.tenzin.classroster.advice.LoggingAdvice">
+        <constructor-arg ref="auditDao"/>
+    </bean>
    
+    <aop:config>
+        <aop:aspect ref="loggingAdvice">
+            <aop:after-returning
+                method="createAuditEntry"
+                pointcut="execution(* com.tenzin.classroster.service.ClassRosterServiceLayer.createStudent(..))"
+            />
+            <aop:after-returning
+                method="createAuditEntry"
+                pointcut="execution(* com.tenzin.classroster.service.ClassRosterServiceLayer.removeStudent(..))"
+            />
+           
+        </aop:aspect>
+        
+    </aop:config>
+    
 </beans>

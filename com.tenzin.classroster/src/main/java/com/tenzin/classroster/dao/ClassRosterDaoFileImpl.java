@@ -12,20 +12,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 /**
  *
  * @author Tenzin Woesel May 10, 2020
  */
-@Component
 public class ClassRosterDaoFileImpl implements ClassRosterDao {
 
     private Map<String, Student> students = new HashMap<>();
 
     private final String ROSTER_FILE;
-    @Autowired
+
     public ClassRosterDaoFileImpl() {
         ROSTER_FILE = "roster.txt";
     }
@@ -96,7 +93,7 @@ public class ClassRosterDaoFileImpl implements ClassRosterDao {
         String currentLine;
 
         Student currentStudent;
-
+        
         while (scanner.hasNextLine()) {
 
             currentLine = scanner.nextLine();
@@ -115,10 +112,11 @@ public class ClassRosterDaoFileImpl implements ClassRosterDao {
 
         studentAsText += aStudent.getFirstName() + DELIMETER;
         studentAsText += aStudent.getLastName() + DELIMETER;
-        studentAsText += aStudent.getCohort() + DELIMETER;
+        studentAsText += aStudent.getCohort();
 
         return studentAsText;
     }
+    
 
     private void writeRoster() throws ClassRosterPersistenceException {
 
