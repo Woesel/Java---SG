@@ -83,4 +83,12 @@ public class BullsAndCowsController {
         List<GameRound> rounds = service.getRoundsForGameId(gameId);
         return rounds;
     }
+
+    @PostMapping("/start")
+    @ResponseStatus(HttpStatus.CREATED)
+    public int startNewGame() {
+
+        Game game = service.startNewGame();
+        return game.getGameId();
+    }
 }

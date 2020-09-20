@@ -144,15 +144,31 @@ public class BullsAndCowsServiceImplTest {
         Game game1 = service.getGameByIdNotHidden(id);
 
         String generatedNumber = game1.getAnswer();
+        
         boolean counter = generatedNumber.length() == generatedNumber.chars().distinct().count();
 
-        //Test if the boolean is true when the numbers are distinct
+        //Check if the boolean is true when the numbers are distinct
         assertTrue(counter);
         //I am checking if the length of the answer is 4
         assertEquals(4, generatedNumber.length());
         //here I am testing if the answer pattern matches digits 0-9
         //with length 4
         assertTrue(Pattern.matches("[0-9]{4}", generatedNumber));
+
+    }
+
+    @Test
+    public void testGeneratedNumber() {
+
+        Game game = service.startNewGame();
+
+        String generatedNumber = game.getAnswer();
+
+        boolean counter = generatedNumber.length() == generatedNumber.chars().distinct().count();
+
+        assertEquals(4, generatedNumber.length());
+        assertTrue(Pattern.matches("[0-9]{4}", generatedNumber));
+        assertTrue(counter);
 
     }
 

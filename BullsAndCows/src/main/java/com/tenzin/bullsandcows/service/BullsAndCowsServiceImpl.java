@@ -58,13 +58,13 @@ public class BullsAndCowsServiceImpl implements BullsAndCowsService {
         }
 
     }
-    
+
     @Override
     public Game getGameByIdNotHidden(int gameId) {
 
         try {
             Game game = gameDao.getGameById(gameId);
-            
+
             return game;
 
         } catch (NullPointerException e) {
@@ -169,6 +169,29 @@ public class BullsAndCowsServiceImpl implements BullsAndCowsService {
             throw new NoGameFoundException("There's no game with that Id");
         }
         return gameRoundDao.getGameRoundsForGame(game);
+
+    }
+    
+    @Override
+    public Game startNewGame() {
+
+        List<Integer> numbers = new ArrayList<>();
+
+        for (int i = 0; i < 10; i++) {
+            numbers.add(i);
+        }
+        //Shuffle 
+        Collections.shuffle(numbers);
+
+        String result = "";
+        for (int i = 0; i < 4; i++) {
+            result += numbers.get(i).toString();
+        }
+
+        Game game = new Game();
+        game.setAnswer(result);
+
+        return gameDao.addGame(game);
 
     }
 }

@@ -25,12 +25,28 @@ public interface BullsAndCowsService {
 
     Game getGameById(int gameId);
 
-    int startGame();
-
     GameRound calculateResult(GameRound gameRound) throws Exception;
 
     List<GameRound> getRoundsForGameId(int gameId) throws Exception;
     
+
     public Game getGameByIdNotHidden(int gameId) throws Exception;
+    
+    /**
+     * This method generates a random number and creates a new game
+     * and add it to DB and returns the gameId
+     * 
+     * @return gameId
+     */
+    int startGame();
+    
+    /**
+     * This is going to return a game object after adding the generated 
+     * number to the DB. This method is similar to the one above, just 
+     * written this in case if I need to return the object.
+     * 
+     * @return Game;
+    */
+     public Game startNewGame();
 
 }

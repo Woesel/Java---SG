@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Weather API</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/home.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class='text-center'>Weather Page</h1>
+        <hr />
+
+        <ul class='list-group' id='errorMessage'></ul>
+
+        <div class="form-group row justify-content-center">
+            <label for="add-zipcode" class="col-auto control-label">
+                Zipcode:
+            </label>
+            <div class="col-auto">
+                <input type="text" id="add-zipcode" placeholder="Enter Zipcode" required>
+            </div>
+
+            <div>
+                <label for="select-unit" class="col-auto control-label">
+                    Units:
+                </label>
+                <select id="units" name="units">
+                    <option value="im">Imperial</option>
+                    <option value="me">Metric</option>
+                </select>
+            </div>
+
+            <div class='col-md-4'>
+                <button type='button' id="getWeatherButton" autofocus>
+                    Get Weather
+                </button>
+            </div>
+
+        </div>
+        <hr />
+        <!-- Weather condition -->
+        <div id="weatherCondition" style="display: none">
+            <h2>Current Conditions in <span id='city-name'></span></h2>
+            <!-- Icon & description -->
+            <div class="row">
+                <div class="col-md-6" id="weatherDescription">
+                    <div class='col-md-3' id='descriptionIcon'>Yay</div>
+                    <div class='col-md-3' id='descriptionName'>Yo Yo</div>
+                </div>
+
+
+                <!-- Temperature , Humidity and Wind -->
+                <div class="col-md-6" id="weatherInfo">
+                    <div class='col-md-3' id='temp'>Temperature: </div>
+                    <div class='col-md-3' id='humid'>Humidity: </div>
+                    <div class='col-md-3' id='wind'>Wind: </div>
+
+                </div>
+
+            </div>
+            <hr />
+        </div>
+
+        <div id="fiveDay" style="display: none">
+            <h2 id='fiveDay-header'>Five Day Forecast</h2>
+            <div class="row" id='five-day-info'></div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://use.fontawesome.com/78896d35e2.js"></script>
+    <script src="js/home.js"></script>
+
+</body>
+
+</html>
